@@ -283,8 +283,8 @@ img {
 
 header {
   height: 100vh;
-  border-top: 30px solid #FCE181;
-  border-bottom: 30px solid #FCE181;
+  border-top: 30px solid #026670;
+  border-bottom: 30px solid #026670;
   background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
   background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
 }

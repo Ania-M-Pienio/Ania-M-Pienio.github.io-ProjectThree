@@ -1,0 +1,45 @@
+// header
+
+header {
+  height: 100vh;
+  border-top: 30px solid $font;
+  border-bottom: 30px solid $font;
+  background-image: $grade;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .graphic {
+      flex: 2; /*in relation to .content */
+      padding-right: 5%;
+    }
+    .content {
+      flex: 3; /*in relation to .graphic */
+    }
+  }
+}
+
+.content h2 {
+  display: inline-block;
+}
+
+.content h1 span {
+  color: $accent;
+  font-size: 100px;
+  position: relative;
+  left: -10px;
+  top: 20px;
+}
+
+.content .subTitle {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h2 {
+    margin-top: 2%;
+  }
+
+}

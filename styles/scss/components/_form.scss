@@ -1,0 +1,119 @@
+// GENERAL FORMS
+form {
+  height: 500px;
+  border: 8px solid $accent;
+}
+
+form {
+  .display {
+    nav.icon {
+      flex: 1;
+      width: 100%;
+      padding: 1% 2%;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $accent;
+      button {
+        width: 10%;
+        background: none;
+      }
+    }
+  }
+} 
+
+// SPECIFICALLY THE EDITING FORM
+
+// editing display
+.edit {
+  display: flex;
+  .display {
+    flex: 5; /* in relation to .controls */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .preview {
+      flex: 6; /* in relation to nav.icon */
+      width: 100%;
+      padding: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        width: 40%;
+      }
+    }
+  }
+  // editing controls
+  .controls {
+    flex: 2;
+    flex-basis: 150px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $shade;
+  }
+}
+
+
+
+.edit .option {
+  width: 100%;
+  height: auto;
+  padding: 5%;
+  input.text {
+    margin-left: 2%;
+  }
+  // drop-down button
+  .select {
+    display: flex;
+    align-items: center;
+    // text on the drop-down button
+    .text {
+      flex: 3; /* in relation to .icon */
+      text-align: left;
+      margin-left: 2%;
+    }
+    // icon on the drop-down button
+    .icon {
+      flex: 1; /* in relation to .text */
+      display: inline-block;
+      text-align: right;
+    }
+  }
+  .menu {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    display: none;
+  }
+}
+
+.edit .option.title .display {
+  border: none;
+  nav.icon {
+    background: none;
+  }
+}
+
+
+
+// SPECIFICALLY THE CODE VIEW FORM
+.code {
+  display: flex; /* this can be applied with javaScript on show */
+  flex-direction: column;
+  .display {
+    .preview {
+      flex: 7;
+      height: 100%;
+      padding: 2.5%;
+    }
+  }
+}
+
+.code {
+  display: none;
+}

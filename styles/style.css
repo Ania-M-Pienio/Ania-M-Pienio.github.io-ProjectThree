@@ -208,79 +208,6 @@ input::-moz-focus-inner {
   overflow: hidden;
 }
 
-html {
-  font-size: 62.5%;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  color: #026670;
-}
-
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-left: 10%;
-  padding-right: 10%;
-  background-color: white;
-}
-
-form {
-  height: 500px;
-}
-
-span {
-  display: inline-block;
-}
-
-button,
-input[type="text"] {
-  width: 100%;
-  height: 35px;
-  border: 2px solid #9FEDD7;
-  background-color: #FEF9C7;
-  color: #026670;
-  text-decoration: none;
-  display: block;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 52px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 40px;
-}
-
-h2 {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 30px;
-}
-
-p {
-  font-family: "Noto Serif", sans-serif;
-  font-size: 18px;
-  font-weight: normal;
-  letter-spacing: normal;
-  line-height: 22px;
-}
-
-img {
-  width: 100%;
-  max-width: 100%;
-  display: inline-block;
-}
-
 header {
   height: 100vh;
   border-top: 30px solid #026670;
@@ -322,8 +249,11 @@ header .wrapper .content {
 }
 
 .content h1 span {
-  color: #E3430E;
-  font-size: 80px;
+  color: #9FEDD7;
+  font-size: 100px;
+  position: relative;
+  left: -10px;
+  top: 20px;
 }
 
 .content .subTitle {
@@ -345,46 +275,15 @@ header .wrapper .content {
   margin-top: 2%;
 }
 
-main {
-  height: auto;
-  border-bottom: 30px solid #026670;
-  background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
-  background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
+form {
+  height: 500px;
+  border: 8px solid #9FEDD7;
 }
 
-main .wrapper {
-  padding-top: 10%;
-  padding-bottom: 10%;
-}
-
-.edit {
-  border: 2px solid #9FEDD7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.edit .display {
-  -webkit-box-flex: 5;
-      -ms-flex: 5;
-          flex: 5;
-  /* in relation to .controls */
-  height: 100%;
-  border-right: 2px solid #9FEDD7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.edit .display nav.icon {
+form .display nav.icon {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  /* in relation to .preview */
   width: 100%;
   padding: 1% 2%;
   text-align: right;
@@ -400,9 +299,30 @@ main .wrapper {
   background-color: #9FEDD7;
 }
 
-.edit .display nav.icon button {
+form .display nav.icon button {
   width: 10%;
   background: none;
+}
+
+.edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.edit .display {
+  -webkit-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  /* in relation to .controls */
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .edit .display .preview {
@@ -431,7 +351,6 @@ main .wrapper {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  /* in relation to .display */
   -ms-flex-preferred-size: 150px;
       flex-basis: 150px;
   height: 100%;
@@ -454,6 +373,10 @@ main .wrapper {
   padding: 5%;
 }
 
+.edit .option input.text {
+  margin-left: 2%;
+}
+
 .edit .option .select {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -469,6 +392,7 @@ main .wrapper {
           flex: 3;
   /* in relation to .icon */
   text-align: left;
+  margin-left: 2%;
 }
 
 .edit .option .select .icon {
@@ -493,48 +417,23 @@ main .wrapper {
   display: none;
 }
 
+.edit .option.title .display {
+  border: none;
+}
+
 .edit .option.title .display nav.icon {
   background: none;
 }
 
 .code {
-  border: 2px solid #9FEDD7;
-  display: none;
-}
-
-.code .display {
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  /* this can be applied with javaScript on show */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.code .display nav.icon {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  padding: 1% 2%;
-  width: 100%;
-  text-align: right;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #9FEDD7;
-}
-
-.code .display nav.icon button {
-  width: 10%;
-  background: none;
 }
 
 .code .display .preview {
@@ -543,4 +442,104 @@ main .wrapper {
           flex: 7;
   height: 100%;
   padding: 2.5%;
+}
+
+.code {
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #026670;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: white;
+}
+
+span {
+  display: inline-block;
+}
+
+button,
+input[type="text"] {
+  width: 100%;
+  height: 45px;
+  border: 5px solid #9FEDD7;
+  background-color: #E3430E;
+  color: #FEF9C7;
+  text-decoration: none;
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+  line-height: normal;
+}
+
+button i {
+  color: #026670;
+  border: none;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 62px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 40px;
+}
+
+h2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+
+p {
+  font-family: "Noto Serif", sans-serif;
+  font-size: 19px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.7;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+}
+
+main {
+  height: auto;
+  border-bottom: 30px solid #026670;
+  background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
+  background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
+}
+
+main .wrapper {
+  padding-top: 5%;
+  padding-bottom: 5%;
 }

@@ -8,27 +8,44 @@
       src="https://kit.fontawesome.com/f6d9bcee4d.js"
       crossorigin="anonymous"
     ></script>
-    <title>Project 3</title>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+    <title>clkEEZ</title>
   </head>
   <body>
     <!---------------------------- HEADER ------------------------------------>
-    <header>
+    <header id="header">
       <div class="wrapper">
-        <h1>click <span>EE</span></h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis
-          corrupti sequi unde quod tempora perferendis illo reprehenderit.
-          Dignissimos modi explicabo sequi debitis nostrum. Qui hic possimus
-          dolorum repellat, sed illum.
-        </p>
-        <div class="button">
-          <button>Start It!</button>
+        <div class="graphic">
+          <img src="./assets/bird.jpg" alt="clkEE bird logo" />
+        </div>
+        <div class="content">
+          <h1>clikr<span>EEEZ</span></h1>
+          <span class="subTitle">
+            <h2>Style it.</h2>
+            <h2>See it.</h2>
+            <h2>Grab the CSS</h2>  
+          </span>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis
+            corrupti sequi unde quod tempora perferendis illo reprehenderit.
+            Dignissimos modi explicabo sequi debitis nostrum. Qui hic possimus
+            dolorum repellat, sed illum. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+          <div class="button">
+            <button type="button">Start It!</button>
+          </div>
         </div>
       </div>
     </header>
 
     <!---------------------------- MAIN ------------------------------------>
-    <main>
+    <main id="main">
       <div class="wrapper">
         <!------------ Form for Editing Button  -------->
         <form class="edit">
@@ -36,13 +53,15 @@
           <!-- Button Preview ---->
           <div class="display">
             <!-- navigate to the code -->
+
             <nav class="icon">
-              <i class="fas fa-file-code fa-3x"></i>
+              <h2>PREVIEW</h2>
+              <button type="button"><i class="fas fa-file-code fa-3x"></i></button>
             </nav>
 
-            <div class="button">
+            <div class="preview edit">
               <!-- dynamically created button goes in here for preview -->
-              <button>button text</button>
+              <button type="button">button text</button>
             </div>
           </div>
 
@@ -60,7 +79,12 @@
 
             <!-- Style button -->
             <section class="option style">
-              <button aria-haspopup="true" aria-expanded="false" class="select">
+              <button
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="select"
+                type="button"
+              >
                 <span class="text"> STYLE </span>
 
                 <span aria-hidden="true" class="icon"
@@ -69,17 +93,22 @@
               </button>
               <!-- Style menu -->
               <div role="menu" class="menu styleMenu">
-                <button role="menuitem">None</button>
-                <button role="menuitem">Chip</button>
-                <button role="menuitem">Outline</button>
-                <button role="menuitem">Link</button>
+                <button role="menuitem" type="button">None</button>
+                <button role="menuitem" type="button">Chip</button>
+                <button role="menuitem" type="button">Outline</button>
+                <button role="menuitem" type="button">Link</button>
               </div>
             </section>
 
             <!--  -->
             <!-- Fill button -->
             <section class="option fill">
-              <button aria-haspopup="true" aria-expanded="false" class="select">
+              <button
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="select"
+                type="button"
+              >
                 <span class="text"> FILL </span>
 
                 <span aria-hidden="true" class="icon"
@@ -88,25 +117,30 @@
               </button>
               <!-- Fill menu -->
               <div role="menu" class="menu fillMenu">
-                <button role="menuitem">None</button>
-                <button role="menuitem">Color</button>
-                <button role="menuitem">Gradient</button>
+                <button role="menuitem" type="button">None</button>
+                <button role="menuitem" type="button">Color</button>
+                <button role="menuitem" type="button">Gradient</button>
               </div>
+            </section>
+            <section class="option test">              
+                <button type="button"> TEST </button>     
             </section>
           </div>
         </form>
+
+     
 
         <!------------ Form for Button CSS Code  -------->
         <form class="code">
           <div class="display">
             <!-- navigate to the code -->
             <nav class="icon">
-              <i class="fas fa-file-code fa-3x"></i>
+              <h2>CSS</h2>
+              <button type="button"><i class="fas fa-window-restore fa-3x"></i></button>
             </nav>
 
-            <div class="css">
+            <div class="preview code">
               <!-- dynamically created css goes in here for preview -->
-  
             </div>
           </div>
         </form>

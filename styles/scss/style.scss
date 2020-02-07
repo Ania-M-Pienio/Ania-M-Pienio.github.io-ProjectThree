@@ -1,5 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:700|Noto+Serif:400i&display=swap");
 @import "setup";
 @import "variables";
+@import "mixins";
+
+// font-family: 'Josefin Sans', sans-serif;
+
+// font-family: 'Noto Serif', serif;
 
 // typography
 html {
@@ -7,17 +13,19 @@ html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  color: $font;
 }
 
-header,
-main {
-  margin: 50px;
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: white;
 }
 
 form {
-  margin-top: 100px;
-  display: flex;
-  height: 250px;
+  height: 300px;
 }
 
 span {
@@ -28,48 +36,131 @@ button,
 input[type="text"] {
   width: 100%;
   height: 35px;
+  border: 2px solid $accent;
+  background-color: $pop;
+  color: $font;
+  text-decoration: none;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  @include font("Josefin Sans", 52px, bold, 1px, 40px);
+}
+
+h2 {
+  @include font("Josefin Sans", 32px, bold, 1px, 30px);
+}
+
+p {
+    @include font('Noto Serif', 18px, normal, normal, 22px);
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+}
+
+// header
+
+header {
+  height: 100vh;
+  border-top: 30px solid $highlight;
+  border-bottom: 30px solid $highlight;
+  background-image: $grade;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .graphic {
+      flex: 2; /*in relation to .content */
+    }
+    .content {
+      flex: 3; /*in relation to .graphic */
+    }
+  }
+}
+
+.content h2 {
+  display: inline-block;
+}
+
+.content h1 span {
+  color: $bold;
+  font-size: 80px;
+}
+
+.content .subTitle {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  border-bottom: 50px solid $highlight;
+  background-image: $grade;
+  .wrapper {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
 }
 
 // form elements
 
 .edit {
-    border: 2px solid black;
-}
-
-.edit .display {
-  flex: 5; /* in relation to .controls */
-  height: 100%;
-  border-right: 2px solid black;
+  border: 2px solid $accent;
   display: flex;
-  flex-direction: column;
-}
-
-.edit .display nav.icon {
-  flex: 1; /* in relation to .button */
-  width: 100%;
-  padding: 2.5%;
-  text-align: right;
-}
-
-.edit .display .button {
-  flex: 7; /* in relation to nav.icon */
-  width: 100%;
-  padding-top: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.edit .display .button button {
-  width: 40%;
-}
-
-.edit .controls {
-  flex: 2; /* in relation to .display */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  .display {
+    flex: 5; /* in relation to .controls */
+    height: 100%;
+    border-right: 2px solid $accent;
+    display: flex;
+    flex-direction: column;
+    nav.icon {
+      flex: 1; /* in relation to .preview */
+      width: 100%;
+      padding: 1% 2%;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $accent;
+      button {
+        width: 10%;
+        background: none;
+      }
+    }
+    .preview {
+      flex: 6; /* in relation to nav.icon */
+      width: 100%;
+      padding: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        width: 40%;
+      }
+    }
+  }
+  .controls {
+    flex: 2; /* in relation to .display */
+    flex-basis: 150px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $shade;
+  }
 }
 
 .edit .option {
@@ -82,12 +173,12 @@ input[type="text"] {
     align-items: center;
     // text on the drop-down button
     .text {
-      flex: 3;
+      flex: 3; /* in relation to .icon */
       text-align: left;
     }
-    // icon on the drop-down button    
+    // icon on the drop-down button
     .icon {
-      flex: 1;
+      flex: 1; /* in relation to .text */
       display: inline-block;
       text-align: right;
     }
@@ -103,9 +194,30 @@ input[type="text"] {
 }
 
 .code {
-    border: 2px solid black;
+  border: 2px solid $accent;
+  // display: none;
+  .display {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    nav.icon {
+      flex: 1;
+      padding: 1% 2%;
+      width: 100%;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $accent;
+      button {
+        width: 10%;
+        background: none;
+      }
+    }
+    .preview {
+      flex: 7;
+      height: 100%;
+      padding: 2.5%;
+    }
+  }
 }
-
-// editing form
-
-// code form

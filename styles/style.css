@@ -307,6 +307,7 @@ header .wrapper .graphic {
       -ms-flex: 2;
           flex: 2;
   /*in relation to .content */
+  padding-right: 5%;
 }
 
 header .wrapper .content {
@@ -331,9 +332,17 @@ header .wrapper .content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.content .subTitle h2 {
+  margin-top: 2%;
 }
 
 main {

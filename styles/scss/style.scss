@@ -83,6 +83,7 @@ header {
     height: 100%;
     .graphic {
       flex: 2; /*in relation to .content */
+      padding-right: 5%;
     }
     .content {
       flex: 3; /*in relation to .graphic */
@@ -103,7 +104,12 @@ header {
   width: 100%;
   margin-top: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  h2 {
+    margin-top: 2%;
+  }
+
 }
 
 main {

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/f6d9bcee4d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Project 3</title>
+  </head>
+  <body>
+    <!---------------------------- HEADER ------------------------------------>
+    <header>
+      <div class="wrapper">
+        <h1>click <span>EE</span></h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis
+          corrupti sequi unde quod tempora perferendis illo reprehenderit.
+          Dignissimos modi explicabo sequi debitis nostrum. Qui hic possimus
+          dolorum repellat, sed illum.
+        </p>
+        <div class="button">
+          <button>Start It!</button>
+        </div>
+      </div>
+    </header>
+
+    <!---------------------------- MAIN ------------------------------------>
+    <main>
+      <div class="wrapper">
+        <!------------ Form for Editing Button  -------->
+        <form class="edit">
+          <!--  -->
+          <!-- Button Preview here -->
+          <div class="display">
+            <!-- dynamically created button goes in here for preview -->
+            <div class="displayIcon">
+              <i class="fas fa-file-code fa-3x"></i>
+            </div>
+          </div>
+          <!--  -->
+          <!-- Button Edits here -->
+          <div class="controls">
+            <!--  -->
+            <!-- Style button -->
+            <section class="option">
+              <button
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="styleButton"
+              >
+                Style
+                <span aria-hidden="true"
+                  ><i class="fas fa-align-justify"></i
+                ></span>
+              </button>
+              <!-- Style menu -->
+              <div role="menu" class="menu styleMenu">
+                <button role="menuitem">None</button>
+                <button role="menuitem">Chip</button>
+                <button role="menuitem">Outline</button>
+                <button role="menuitem">Link</button>
+              </div>
+            </section>
+            <!--  -->
+            <!-- Fill button -->
+            <section class="option">
+              <button
+                aria-haspopup="true"
+                aria-expanded="false"
+                class="fillButton"
+              >
+                Fill
+                <span aria-hidden="true"
+                  ><i class="fas fa-align-justify"></i
+                ></span>
+              </button>
+              <!-- Fill menu -->
+              <div role="menu" class="menu fillMenu">
+                <button role="menuitem">None</button>
+                <button role="menuitem">Color</button>
+                <button role="menuitem">Gradient</button>
+              </div>
+            </section>
+          </div>
+        </form>
+
+        <!------------ Form for Button CSS Code  -------->
+        <form class="code">
+          <div class="display">
+            <!-- dynamically generated css code goes in here -->
+          </div>
+          <div class="controls"></div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

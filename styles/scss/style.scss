@@ -1,0 +1,54 @@
+@import "setup";
+@import "variables";
+
+
+// typography
+html {
+  font-size: 62.5%;
+  color: $font-text;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+header, 
+main {
+  margin: 50px;
+}
+
+form {
+  margin-top: 100px;
+   display: flex;
+}
+
+button {
+  width: 150px;
+}
+
+
+// form elements
+
+
+.option {
+  flex: 1;
+  margin-top: 20px;  
+  padding: 3%;
+  border: 1px solid black;
+}
+
+.display {
+  flex: 4;
+  height: 400px;
+  border: 1px solid black;
+}
+
+.menu {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+// editing form
+
+// code form

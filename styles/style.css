@@ -225,7 +225,7 @@ html {
 }
 
 form {
-  height: 300px;
+  height: 500px;
 }
 
 span {
@@ -346,7 +346,8 @@ header .wrapper .content {
 }
 
 main {
-  border-bottom: 50px solid #FCE181;
+  height: auto;
+  border-bottom: 30px solid #026670;
   background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
   background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
 }
@@ -492,8 +493,13 @@ main .wrapper {
   display: none;
 }
 
+.edit .option.title .display nav.icon {
+  background: none;
+}
+
 .code {
   border: 2px solid #9FEDD7;
+  display: none;
 }
 
 .code .display {

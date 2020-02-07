@@ -25,7 +25,7 @@ html {
 }
 
 form {
-  height: 300px;
+  height: 500px;
 }
 
 span {
@@ -113,7 +113,8 @@ header {
 }
 
 main {
-  border-bottom: 50px solid $highlight;
+  height: auto;
+  border-bottom: 30px solid $font;
   background-image: $grade;
   .wrapper {
     padding-top: 10%;
@@ -122,6 +123,8 @@ main {
 }
 
 // form elements
+
+
 
 .edit {
   border: 2px solid $accent;
@@ -169,6 +172,8 @@ main {
   }
 }
 
+
+
 .edit .option {
   width: 100%;
   height: auto;
@@ -199,9 +204,13 @@ main {
   }
 }
 
+.edit .option.title .display nav.icon {
+  background: none;
+}
+
 .code {
   border: 2px solid $accent;
-  // display: none;
+  display: none;
   .display {
     height: 100%;
     display: flex;

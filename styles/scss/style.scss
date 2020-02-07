@@ -1,53 +1,110 @@
 @import "setup";
 @import "variables";
 
-
 // typography
 html {
   font-size: 62.5%;
-  color: $font-text;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
-header, 
+header,
 main {
   margin: 50px;
 }
 
 form {
   margin-top: 100px;
-   display: flex;
+  display: flex;
+  height: 250px;
 }
 
-button {
-  width: 150px;
+span {
+  display: inline-block;
 }
 
+button,
+input[type="text"] {
+  width: 100%;
+  height: 35px;
+}
 
 // form elements
 
-
-.option {
-  flex: 1;
-  margin-top: 20px;  
-  padding: 3%;
-  border: 1px solid black;
+.edit {
+    border: 2px solid black;
 }
 
-.display {
-  flex: 4;
-  height: 400px;
-  border: 1px solid black;
-}
-
-.menu {
-  height: 200px;
+.edit .display {
+  flex: 5; /* in relation to .controls */
+  height: 100%;
+  border-right: 2px solid black;
   display: flex;
   flex-direction: column;
 }
 
+.edit .display nav.icon {
+  flex: 1; /* in relation to .button */
+  width: 100%;
+  padding: 2.5%;
+  text-align: right;
+}
+
+.edit .display .button {
+  flex: 7; /* in relation to nav.icon */
+  width: 100%;
+  padding-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.edit .display .button button {
+  width: 40%;
+}
+
+.edit .controls {
+  flex: 2; /* in relation to .display */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.edit .option {
+  width: 100%;
+  height: auto;
+  padding: 5%;
+  // drop-down button
+  .select {
+    display: flex;
+    align-items: center;
+    // text on the drop-down button
+    .text {
+      flex: 3;
+      text-align: left;
+    }
+    // icon on the drop-down button    
+    .icon {
+      flex: 1;
+      display: inline-block;
+      text-align: right;
+    }
+  }
+  // menu that drops when drop-down button is clicked
+  .menu {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    display: none;
+  }
+}
+
+.code {
+    border: 2px solid black;
+}
 
 // editing form
 

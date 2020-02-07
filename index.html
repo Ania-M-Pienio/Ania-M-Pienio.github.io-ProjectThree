@@ -33,27 +33,38 @@
         <!------------ Form for Editing Button  -------->
         <form class="edit">
           <!--  -->
-          <!-- Button Preview here -->
+          <!-- Button Preview ---->
           <div class="display">
-            <!-- dynamically created button goes in here for preview -->
-            <div class="displayIcon">
+            <!-- navigate to the code -->
+            <nav class="icon">
               <i class="fas fa-file-code fa-3x"></i>
+            </nav>
+
+            <div class="button">
+              <!-- dynamically created button goes in here for preview -->
+              <button>button text</button>
             </div>
           </div>
+
           <!--  -->
-          <!-- Button Edits here -->
+          <!-- Button Edits ----------->
           <div class="controls">
             <!--  -->
+
+            <section class="option text">
+              <div>
+                <label for="buttonText"> BUTTON TEXT </label>
+                <input type="text" id="buttonText" />
+              </div>
+            </section>
+
             <!-- Style button -->
-            <section class="option">
-              <button
-                aria-haspopup="true"
-                aria-expanded="false"
-                class="styleButton"
-              >
-                Style
-                <span aria-hidden="true"
-                  ><i class="fas fa-align-justify"></i
+            <section class="option style">
+              <button aria-haspopup="true" aria-expanded="false" class="select">
+                <span class="text"> STYLE </span>
+
+                <span aria-hidden="true" class="icon"
+                  ><i class="fas fa-align-justify fa-2x"></i
                 ></span>
               </button>
               <!-- Style menu -->
@@ -64,17 +75,15 @@
                 <button role="menuitem">Link</button>
               </div>
             </section>
+
             <!--  -->
             <!-- Fill button -->
-            <section class="option">
-              <button
-                aria-haspopup="true"
-                aria-expanded="false"
-                class="fillButton"
-              >
-                Fill
-                <span aria-hidden="true"
-                  ><i class="fas fa-align-justify"></i
+            <section class="option fill">
+              <button aria-haspopup="true" aria-expanded="false" class="select">
+                <span class="text"> FILL </span>
+
+                <span aria-hidden="true" class="icon"
+                  ><i class="fas fa-align-justify fa-2x"></i
                 ></span>
               </button>
               <!-- Fill menu -->
@@ -90,9 +99,16 @@
         <!------------ Form for Button CSS Code  -------->
         <form class="code">
           <div class="display">
-            <!-- dynamically generated css code goes in here -->
+            <!-- navigate to the code -->
+            <nav class="icon">
+              <i class="fas fa-file-code fa-3x"></i>
+            </nav>
+
+            <div class="css">
+              <!-- dynamically created css goes in here for preview -->
+  
+            </div>
           </div>
-          <div class="controls"></div>
         </form>
       </div>
     </main>

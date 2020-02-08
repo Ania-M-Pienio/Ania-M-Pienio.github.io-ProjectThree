@@ -621,8 +621,3 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
 }
-
-main .option.test,
-main .option.test2 {
-  display: none;
-}

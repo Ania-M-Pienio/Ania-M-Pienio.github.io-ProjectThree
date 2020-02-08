@@ -41,5 +41,12 @@ header {
   h2 {
     margin-top: 2%;
   }
+}
 
+  header .content .button.start { 
+  height: 55px;
+  button {
+    height: 55px;
+    @include font('Libre Franklin', 28px, bold, normal, normal);
+  }
 }

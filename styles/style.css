@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:700|Noto+Serif:400i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:700|Noto+Serif:400i&display=swap|Libre+Franklin&display=swap");
 article,
 aside,
 details,
@@ -275,8 +275,21 @@ header .wrapper .content {
   margin-top: 2%;
 }
 
+header .content .button.start {
+  height: 55px;
+}
+
+header .content .button.start button {
+  height: 55px;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
 form {
-  height: 500px;
+  height: 600px;
   border: 8px solid #9FEDD7;
 }
 
@@ -304,6 +317,23 @@ form .display nav.icon button {
   background: none;
 }
 
+form label {
+  margin: 0;
+  padding: 0 0 0 2%;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+form input[type="text"] {
+  padding-left: 8px;
+  background-color: #FEF9C7;
+  border: 4px solid #9FEDD7;
+  color: #026670;
+}
+
 .edit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -314,7 +344,6 @@ form .display nav.icon button {
   -webkit-box-flex: 5;
       -ms-flex: 5;
           flex: 5;
-  /* in relation to .controls */
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -365,16 +394,13 @@ form .display nav.icon button {
       -ms-flex-pack: start;
           justify-content: flex-start;
   background-color: #EDEAE5;
+  border-left: 8px solid #9FEDD7;
 }
 
 .edit .option {
   width: 100%;
   height: auto;
   padding: 5%;
-}
-
-.edit .option input.text {
-  margin-left: 2%;
 }
 
 .edit .option .select {
@@ -444,10 +470,6 @@ form .display nav.icon button {
   padding: 2.5%;
 }
 
-.code {
-  display: none;
-}
-
 html {
   font-size: 62.5%;
   margin: 0;
@@ -471,27 +493,22 @@ span {
 button,
 input[type="text"] {
   width: 100%;
-  height: 45px;
+  height: 50px;
   border: 5px solid #9FEDD7;
   background-color: #E3430E;
   color: #FEF9C7;
   text-decoration: none;
   display: block;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 20px;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 16px;
   font-weight: bold;
-  letter-spacing: 1.3px;
+  letter-spacing: normal;
   line-height: normal;
 }
 
 button i {
   color: #026670;
   border: none;
-}
-
-label {
-  margin: 0;
-  padding: 0;
 }
 
 h1,
@@ -541,5 +558,9 @@ main {
 
 main .wrapper {
   padding-top: 5%;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
+}
+
+main .option.test {
+  display: none;
 }

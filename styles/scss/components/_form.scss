@@ -1,6 +1,6 @@
 // GENERAL FORMS
 form {
-  height: 500px;
+  height: 600px;
   border: 8px solid $accent;
 }
 
@@ -23,13 +23,30 @@ form {
   }
 } 
 
+// all form labels
+form label {
+  margin: 0;
+  padding: 0 0 0 2%;
+  @include font('Libre Franklin', 16px, normal, normal, normal);
+}
+
+form input[type="text"] {
+  padding-left: 8px;
+  background-color: $pop;
+  border: 4px solid $accent;
+  color: $font;
+}
+
+
+
 // SPECIFICALLY THE EDITING FORM
 
 // editing display
 .edit {
   display: flex;
+  // display area
   .display {
-    flex: 5; /* in relation to .controls */
+    flex: 5; 
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -54,18 +71,15 @@ form {
     flex-direction: column;
     justify-content: flex-start;
     background-color: $shade;
+    border-left: 8px solid $accent;
   }
 }
-
 
 
 .edit .option {
   width: 100%;
   height: auto;
   padding: 5%;
-  input.text {
-    margin-left: 2%;
-  }
   // drop-down button
   .select {
     display: flex;
@@ -115,5 +129,6 @@ form {
 }
 
 .code {
-  display: none;
+  // display: none;
 }
+

@@ -397,6 +397,20 @@ form input[type="text"] {
   border-left: 8px solid #9FEDD7;
 }
 
+.default {
+  width: auto;
+  height: 50px;
+  border: none;
+  background-color: #EDEAE5;
+  color: #026670;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1.2;
+  line-height: normal;
+}
+
 .edit .option {
   width: 100%;
   height: auto;
@@ -561,6 +575,7 @@ main .wrapper {
   padding-bottom: 10%;
 }
 
-main .option.test {
+main .option.test,
+main .option.test2 {
   display: none;
 }

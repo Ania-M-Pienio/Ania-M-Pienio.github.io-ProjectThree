@@ -76,6 +76,22 @@ form input[type="text"] {
 }
 
 
+// preview button
+.default {
+  width: auto;
+  height: 50px;
+  border: none;
+  background-color: $shade; 
+  color: $font;
+  text-decoration: none;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1.2;
+  line-height: normal;
+}
+
+
 .edit .option {
   width: 100%;
   height: auto;
@@ -131,4 +147,6 @@ form input[type="text"] {
 .code {
   // display: none;
 }
+
+
 

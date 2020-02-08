@@ -60,7 +60,7 @@
 
             <div class="preview edit">
               <!-- dynamically created button goes in here for preview -->
-              <button type="button">button text</button>
+              <button type="button" class="default">button text</button>
             </div>
           </div>
 
@@ -80,10 +80,11 @@
               </div>
             </section>
 
+            <!-- Button text -->
             <section class="option text">
               <div>
                 <label for="buttonText"> APPLY TEXT </label>
-                <input type="text" id="buttonText" />
+                <input type="text" id="buttonText" placeholder="button text" maxlength="15" />
               </div>
             </section>
 
@@ -103,6 +104,7 @@
                   ><i class="fas fa-align-justify"></i
                 ></span>
               </button>
+
               <!-- Style menu -->
               <div role="menu" class="menu styleMenu">
                 <button role="menuitem" type="button">None</button>
@@ -135,14 +137,19 @@
                 <button role="menuitem" type="button">Gradient</button>
               </div>
             </section>
+            <!-- Testing button -->
             <section class="option test">
               <button type="button">TEST</button>             
+            </section>
+
+            <section class="option test2">
+              <button type="button">TEST2</button>             
             </section>
        
           </div>
         </form>
 
-        <!------------ Form for Button CSS Code  -------->
+    <!------------ Form for Button CSS Code  -------->
         <form class="code">
           <div class="display">
             <!-- navigate to the code -->

@@ -176,13 +176,14 @@ app.init = function() {
   });
 
   // ----------------TEST BUTTONS -----------------------------
-  $(`.test button`).on(`click`, function() {
+  $(`.test2 button`).on(`click`, function() {
     app.button.backgroundColor = `#FCE181`;
     app.button.border = `5px solid #E3430E`;
     app.updateButton();
   });
 
-  $(`.test2 button`).on(`click`, function() {
+  $(`.test button`).on(`click`, function() {
+      console.log(app.getCSSHtml(``))
   });
   // ----------------------------------------------------------
 }; // end of init

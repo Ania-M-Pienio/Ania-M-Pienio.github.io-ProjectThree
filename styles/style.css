@@ -360,6 +360,21 @@ form input[type="text"] {
   padding: 2.5%;
 }
 
+.default {
+  width: auto;
+  height: 50px;
+  border: none;
+  background-color: #D9D1C3;
+  color: #026670;
+  text-decoration: none;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1.2;
+  line-height: normal;
+  text-align: center;
+}
+
 .code .display .preview .cssFormat p {
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -445,21 +460,6 @@ form input[type="text"] {
           justify-content: flex-start;
   background-color: white;
   border-left: 8px solid #9FEDD7;
-}
-
-.default {
-  width: auto;
-  height: 50px;
-  border: none;
-  background-color: #D9D1C3;
-  color: #026670;
-  text-decoration: none;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 1.2;
-  line-height: normal;
-  text-align: center;
 }
 
 .edit .option {

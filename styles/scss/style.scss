@@ -38,14 +38,13 @@ input[type="text"] {
   color: $pop;
   text-decoration: none;
   display: block;
-  @include font('Libre Franklin', 16px, bold, normal, normal);
+  @include font("Libre Franklin", 16px, bold, normal, normal);
 }
 
-// all button icons
-button i {
-  color: $font;
-  border: none;
-}
+  i {
+    color: $font;
+    border: none;
+  }
 
 // headings
 h1,
@@ -75,6 +74,10 @@ img {
   display: inline-block;
 }
 
+ul li {
+  list-style: none;
+}
+
 // main setup
 main {
   height: auto;
@@ -90,5 +93,3 @@ main .option.test,
 main .option.test2 {
   display: none;
 }
-
-

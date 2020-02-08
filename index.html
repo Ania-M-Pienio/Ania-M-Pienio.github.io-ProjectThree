@@ -14,7 +14,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./index.js"></script>
-    <title>clkEEZ</title>
+    <title>clickVIBE</title>
   </head>
   <body>
     <!---------------------------- HEADER ------------------------------------>
@@ -24,7 +24,7 @@
           <img src="./assets/bird.png" alt="clikEEZ bird logo" />
         </div>
         <div class="content">
-          <h1>clicker<span>VIBE</span></h1>
+          <h1>click<span>VIBE</span></h1>
           <span class="subTitle">
             <h2>Style it.</h2>
             <h2>Preview it.</h2>
@@ -59,7 +59,6 @@
             </nav>
 
             <div class="preview edit">
-              <!-- dynamically created button goes in here for preview -->
               <button type="button" class="default">button text</button>
             </div>
           </div>
@@ -68,14 +67,13 @@
           <!-- Button Edits ----------->
           <div class="controls">
             <!--  -->
-
             <section class="option title">
               <div class="display">
                 <nav class="icon">
                   <h2>STYLE IT</h2>
-                  <!-- <button type="button">
-                    <i class="fas fa-arrow-right fa-3x"></i>
-                  </button> -->
+                  <button type="button" class="title">
+                    <i class="fas fa-bath fa-2x"></i>
+                  </button>
                 </nav>
               </div>
             </section>
@@ -83,20 +81,27 @@
             <!-- Button text -->
             <section class="option text">
               <div>
-                <label for="buttonText"> APPLY TEXT </label>
-                <input type="text" id="buttonText" placeholder="button text" maxlength="15" />
+                <label for="buttonText"> Apply Text </label>
+                <input
+                  type="text"
+                  id="buttonText"
+                  placeholder="button text"
+                  maxlength="20"
+                  required
+                  aria-required="true"
+                />
               </div>
             </section>
 
             <!-- Style button -->
             <section class="option style">
-              <label for="buttonStyle"> APPLY STYLE </label>
+              <label for="buttonStyles"> Apply Style </label>
               <button
                 aria-haspopup="true"
                 aria-expanded="false"
                 class="select"
                 type="button"
-                id="buttonStyle"
+                id="buttonStyles"
               >
                 <span class="text"> STYLES </span>
 
@@ -106,7 +111,7 @@
               </button>
 
               <!-- Style menu -->
-              <div role="menu" class="menu styleMenu">
+              <div role="menu" class="menu stylesMenu">
                 <button role="menuitem" type="button">None</button>
                 <button role="menuitem" type="button">Chip</button>
                 <button role="menuitem" type="button">Outline</button>
@@ -117,12 +122,13 @@
             <!--  -->
             <!-- Fill button -->
             <section class="option fill">
-              <label for="buttonStyle"> APPLY FILL </label>
+              <label for="buttonFills"> Apply Fill </label>
               <button
                 aria-haspopup="true"
                 aria-expanded="false"
                 class="select"
                 type="button"
+                id="buttonFills"
               >
                 <span class="text"> FILLS </span>
 
@@ -131,7 +137,7 @@
                 ></span>
               </button>
               <!-- Fill menu -->
-              <div role="menu" class="menu fillMenu">
+              <div role="menu" class="menu fillsMenu">
                 <button role="menuitem" type="button">None</button>
                 <button role="menuitem" type="button">Color</button>
                 <button role="menuitem" type="button">Gradient</button>
@@ -139,17 +145,16 @@
             </section>
             <!-- Testing button -->
             <section class="option test">
-              <button type="button">TEST</button>             
+              <button type="button">TEST</button>
             </section>
 
             <section class="option test2">
-              <button type="button">TEST2</button>             
+              <button type="button">TEST2</button>
             </section>
-       
           </div>
         </form>
 
-    <!------------ Form for Button CSS Code  -------->
+        <!------------ Form for Button CSS Code  -------->
         <form class="code">
           <div class="display">
             <!-- navigate to the code -->

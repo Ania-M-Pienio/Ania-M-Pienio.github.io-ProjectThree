@@ -47,6 +47,6 @@ header {
   height: 55px;
   button {
     height: 55px;
-    @include font('Libre Franklin', 28px, bold, normal, normal);
+    @include franks(28px, bold, normal, normal);
   }
 }

@@ -6,6 +6,7 @@ app.variables = function() {
   app.$button = $(`.preview.edit button`);
   app.$input = $(`input#buttonText`);
 
+  app.$drops = $(`.select`);
   app.$styles = $(`button#buttonStyles`);
   app.$fills = $(`button#buttonFills`);
 
@@ -19,23 +20,21 @@ app.variables = function() {
 
   // stores the current state of the preview button text - set to default
   app.button.text = `button text`;
-
-
 }; // end of variables
 
 // set up the form with defaults
 app.setup = function() {
   app.$button.text(app.button.text);
   app.$input.val(app.button.text);
-  app.setButtonDefaults();
+  app.setDefaults();
 };
 
-app.setButtonDefaults = function() {
-    // store the current state of  the button's css
+app.setDefaults = function() {
+  // store the current state of  the button's css
   app.button.width = `200px`;
   app.button.height = `100px`;
   app.button.border = `none`;
-  app.button.backgroundColor = `#EDEAE5`;
+  app.button.backgroundColor = `#D9D1C3`;
   app.button.color = `#FEF9C7`;
   app.button.textDecoration = `none`;
   app.button.fontFamily = `'Arial', sans-serif`;
@@ -44,6 +43,18 @@ app.setButtonDefaults = function() {
   app.button.letterSpacing = `1.2`;
   app.button.lineHeight = `normal`;
   app.button.textAlign = `center`;
+};
+
+
+// creates a list item as css 
+app.getCSSHtml = function(key, value, color) {
+  return `
+    <li> 
+      <span class="red"> ${key} </span>
+      :
+      <span class="${color}"> ${value} </span>
+    </li>   
+    `;
 }
 
 // scrolls to the element with the given id
@@ -53,7 +64,7 @@ app.scrollToElem = function(id) {
 };
 
 // replaces the innter text node of the button
-app.setButtonText = function(inputText) {
+app.updateText = function(inputText) {
   // update the variable that stores the button text
   app.button.text = inputText;
 
@@ -62,7 +73,7 @@ app.setButtonText = function(inputText) {
 };
 
 // scrubs out old css (incl defaults) and replaces with all new css
-app.updateDisplayButton = function() {
+app.updateButton = function() {
   app.$button.removeClass(`default`); // removes any defaults
   app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
   app.$button.css({
@@ -98,12 +109,14 @@ app.toggleMenu = function($menu, $other) {
         .css({ display: `none` })
         .prev()
         .css({ display: `none` })
-        .parent().css({ display: `none` }) // make the other button and its label are hidden
+        .parent()
+        .css({ display: `none` }) // make the other button and its label are hidden
     : $other
         .css({ display: `flex` })
         .prev()
         .css({ display: `block` })
-        .parent().css({ display: `block` }); //  make the other button and its label visible
+        .parent()
+        .css({ display: `block` }); //  make the other button and its label visible
 
   app.menuOpen
     ? $menu.parent().css({ background: `#9FEDD7` })
@@ -119,20 +132,35 @@ app.init = function() {
     app.scrollToElem(`main`);
   });
 
-  // Handler Button Text Input
-  app.$input.on(`focus`, function() {
-    console.log(`clicking input`);
-
-    $(`.option.text`).css({ background: `#9FEDD7`});
-
-    setTimeout(() => {
-      $(`.option.text`).css({ background: `white` });
-    }, 3000);
-        
+  // Handler Button Text Input Focus
+  app.$input.on(`mouseleave`, function() {
+    $(`.option.text`).css({ background: `white` });
+    $(this).css({ background: `#FCE181` });
   });
 
+  // Handler Button Text Input Focus
+  app.$input.on(`mouseenter`, function() {
+    $(`.option.text`).css({ background: `#9FEDD7` });
+    $(this).css({ background: `white` });
+  });
+
+  app.$drops.on(`mouseenter`, function() {
+    $(this)
+      .parent()
+      .css({ background: `#9FEDD7` });
+  });
+
+  app.$drops.on(`mouseleave`, function() {
+    app.menuOpen
+      ? ""
+      : $(this)
+          .parent()
+          .css({ background: `white` });
+  });
+
+  // Handler Button Text Engaged
   app.$input.on(`keyup`, function() {
-    app.setButtonText($(this).val());
+    app.updateText($(this).val());
   });
 
   // Hanlder Styles Button
@@ -147,19 +175,14 @@ app.init = function() {
     app.toggleMenu(app.$fillsMenu, app.$styles);
   });
 
-
-
   // ----------------TEST BUTTONS -----------------------------
   $(`.test button`).on(`click`, function() {
     app.button.backgroundColor = `#FCE181`;
     app.button.border = `5px solid #E3430E`;
-    app.updateDisplayButton();
+    app.updateButton();
   });
 
   $(`.test2 button`).on(`click`, function() {
-    app.button.backgroundColor = `#026670`;
-    app.button.border = `5px solid #9FEDD7`;
-    app.updateDisplayButton();
   });
   // ----------------------------------------------------------
 }; // end of init

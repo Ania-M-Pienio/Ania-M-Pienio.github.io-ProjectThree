@@ -1,0 +1,38 @@
+// SPECIFICALLY THE CODE VIEW FORM
+.code {
+  display: flex; /* this can be applied with javaScript on show */
+  flex-direction: column;
+  .display {
+    .preview {
+      flex: 7;
+      height: 100%;
+      padding: 2.5%;
+    }
+  }
+}
+
+.code {
+  // display: none;
+}
+
+.code .display .preview {
+  .cssFormat p {
+    @include firas(15px, normal, normal, 1.6);
+  }
+
+  p.red {
+    color: rgb(236, 55, 55);
+  }
+
+  p.brown {
+    color: rgb(90, 63, 63);
+  }
+
+  p.green {
+    color: rgb(113, 138, 113);
+  }
+
+  p.blue {
+    color: rgb(33, 124, 199);
+  }
+}

@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:700|Noto+Serif:400i&display=swap|Libre+Franklin&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Fira+Code|Josefin+Sans:700|Libre+Franklin|Noto+Serif:400i&display=swap');
 @import "setup";
 @import "variables";
 @import "mixins";
 @import "components/header";
 @import "components/form";
+@import "components/display";
+@import "components/edits";
 
 // typography
 html {
@@ -38,7 +40,7 @@ input[type="text"] {
   color: $pop;
   text-decoration: none;
   display: block;
-  @include font("Libre Franklin", 16px, bold, normal, normal);
+  @include franks(16px, bold, normal, normal);
 }
 
   i {
@@ -56,15 +58,16 @@ h4 {
 }
 
 h1 {
-  @include font("Josefin Sans", 62px, bold, 1px, 40px);
+
+  @include joses(62px, bold, 1px, 40px);
 }
 
 h2 {
-  @include font("Josefin Sans", 32px, bold, 1px, 30px);
+  @include joses(32px, bold, 1px, 30px);
 }
 
 p {
-  @include font("Noto Serif", 19px, normal, normal, 1.7);
+  @include notos(19px, normal, normal, 1.7);
 }
 
 // images
@@ -91,5 +94,5 @@ main {
 
 main .option.test,
 main .option.test2 {
-  display: none;
+  // display: none;
 }

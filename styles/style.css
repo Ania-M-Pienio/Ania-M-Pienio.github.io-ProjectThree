@@ -383,20 +383,40 @@ form input[type="text"] {
   line-height: 1.6;
 }
 
-.code .display .preview p.red {
+.code .display .preview span.red {
   color: #ec3737;
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.6;
 }
 
-.code .display .preview p.brown {
+.code .display .preview span.brown {
   color: #5a3f3f;
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.6;
 }
 
-.code .display .preview p.green {
+.code .display .preview span.green {
   color: #718a71;
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.6;
 }
 
-.code .display .preview p.blue {
+.code .display .preview span.blue {
   color: #217cc7;
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1.6;
 }
 
 .edit {

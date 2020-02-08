@@ -20,39 +20,54 @@ app.variables = function() {
 
   // stores the current state of the preview button text - set to default
   app.button.text = `button text`;
+
 }; // end of variables
 
 // set up the form with defaults
 app.setup = function() {
+  app.variables();
   app.$button.text(app.button.text);
   app.$input.val(app.button.text);
   app.setDefaults();
+  app.setCSS();
 };
 
+// store the current state of  the button's css
 app.setDefaults = function() {
-  // store the current state of  the button's css
-  app.button.width = `200px`;
-  app.button.height = `100px`;
-  app.button.border = `none`;
-  app.button.backgroundColor = `#D9D1C3`;
-  app.button.color = `#FEF9C7`;
-  app.button.textDecoration = `none`;
-  app.button.fontFamily = `'Arial', sans-serif`;
-  app.button.fontSize = `16px`;
-  app.button.fontWeight = `bold`;
-  app.button.letterSpacing = `1.2`;
-  app.button.lineHeight = `normal`;
-  app.button.textAlign = `center`;
+  app.button = {
+    width:  { value: `200px`, color: `blue`},
+    height: { value: `100px`, color: `green`},
+    border: { value: `none` , color: `blue`},
+    color:  { value: `#FEF9C7`, color: `blue`},
+    background:       { value: `#D9D1C3`, color: `blue`},
+    "font-family":    { value: `'Arial', sans-serif`, color: `brown`},
+    "font-size":      { value: `16px`, color: `green`},
+    "font-weight":    { value: `bold`, color: `blue`},
+    "letter-spacing": { value: `1.2`, color: `green`},
+    "line-height":    { value: `normal`, color: `blue`},
+    "text-align":     { value: `center`, color: `blue`},
+  }
 };
+
+app.setCSS = function() {
+  const $list = $(`ul`);
+  $list.html(``);
+  for (let cssItem in app.button) {
+    let listItem = this.getCSSHtml(cssItem, app.button[cssItem].value, app.button[cssItem].color);
+    $list.append(listItem);   
+  } // end of let-in
+
+} // end of setCSS
 
 
 // creates a list item as css 
 app.getCSSHtml = function(key, value, color) {
   return `
-    <li> 
+    <li class="cssFormat"> 
       <span class="red"> ${key} </span>
-      :
+      <span class="brown"> : </span>
       <span class="${color}"> ${value} </span>
+      <span class="brown">, </span>
     </li>   
     `;
 }
@@ -77,18 +92,17 @@ app.updateButton = function() {
   app.$button.removeClass(`default`); // removes any defaults
   app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
   app.$button.css({
-    width: `${app.button.width}`,
-    height: `${app.button.height}`,
-    border: `${app.button.border}`,
-    "background-color": `${app.button.backgroundColor}`,
-    color: `${app.button.color}`,
-    "text-decoration": `${app.button.textDecoration}`,
-    "font-family": `${app.button.fontFamily}`,
-    "font-size": `${app.button.fontSize}`,
-    "font-weight": `${app.button.fontWeight}`,
-    "letter-spacing": `${app.button.letterSpacing}`,
-    "line-height": `${app.button.lineHeight}`,
-    "text-align": `${app.button.textAlign}`
+    width: `${app.button.width.value}`,
+    height: `${app.button.height.value}`,
+    border: `${app.button.border.value}`,
+    color: `${app.button.color.value}`,
+    background: `${app.button.background.value}`,
+    "font-family": `${app.button["font-family"].value}`,
+    "font-size": `${app.button["font-size"].value}`,
+    "font-weight": `${app.button["font-weight"].value}`,
+    "letter-spacing": `${app.button["letter-spacing"].value}`,
+    "line-height": `${app.button["line-height"].value}`,
+    "text-align": `${app.button["text-align"].value}`
   });
 }; // end of updateDisplayButton
 
@@ -124,7 +138,7 @@ app.toggleMenu = function($menu, $other) {
 };
 
 app.init = function() {
-  app.variables();
+ 
   app.setup();
 
   // Handler Banner Button - scrolls to the Button Area
@@ -183,7 +197,9 @@ app.init = function() {
   });
 
   $(`.test button`).on(`click`, function() {
-      console.log(app.getCSSHtml(``))
+    // $(`ul`).html(``);
+    const cssItem = app.getCSSHtml(`width`, `auto`, `blue`);
+    $(`ul`).append(cssItem);
   });
   // ----------------------------------------------------------
 }; // end of init

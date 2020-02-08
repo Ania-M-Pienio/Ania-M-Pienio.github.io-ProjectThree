@@ -36,19 +36,23 @@
     @include firas(15px, normal, normal, 1.6);
   }
 
-  p.red {
+  span.red {
     color: rgb(236, 55, 55);
+    @include firas(15px, normal, normal, 1.6);
   }
 
-  p.brown {
+  span.brown {
     color: rgb(90, 63, 63);
+    @include firas(15px, normal, normal, 1.6);
   }
 
-  p.green {
+  span.green {
     color: rgb(113, 138, 113);
+    @include firas(15px, normal, normal, 1.6);
   }
 
-  p.blue {
+  span.blue {
     color: rgb(33, 124, 199);
+    @include firas(15px, normal, normal, 1.6);
   }
 }

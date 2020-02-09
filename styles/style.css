@@ -741,8 +741,3 @@ main .wrapper {
   padding-bottom: 10%;
   position: relative;
 }
-
-main .option.test,
-main .option.test2 {
-  display: none;
-}

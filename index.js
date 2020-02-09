@@ -167,29 +167,16 @@ app.parseBorder = function(border) {
   return border.split(`#`)[1];
 };
 
-app.init = function() {
-  app.setup();
+// All event handlers for Style
+app.launchStyles = function() {
 
-  // Handler Banner Button - scrolls to the Button Area
-  $(`header button`).on(`click`, function() {
-    app.scrollToElem(`main`);
+   // Hanlder Style Menu
+  app.$styles.on(`click`, function() {
+    app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
 
-  // Handler for switching to css code
-  $(`button.switch`).on(`click`, function() {
-    $(`form.code`).css({
-      "margin-left": `0`,
-    });
-    $(`form.edit .display.icons`).css({
-      visibility: `hidden`
-    });
-    $(`.code .display .preview .cssFormat`)
-    .css("transform", "scale(0.95)");
-  });
-
-
-  // Handler for resetting the styling
+    // Handler for resetting the styling
   $(`button.title`).on(`click`, function() {
     app.setDefaults();
     app.updatePickers();
@@ -197,45 +184,54 @@ app.init = function() {
     app.updateCSS();
   });
 
-  // Handler Button Text Input Focus
-  app.$input.on(`mouseleave`, function() {
-    $(`.option.text`).css({ background: `white` });
-    $(this).css({ background: `#FCE181` });
+  // Handle on change Style: Square 
+  $(`button.square`).on(`click`, function() {
+    app.button["border-radius"].value = `0`;
+    app.updateButton();
+    app.updateCSS();
   });
 
-  // Handler Button Text Input Unfocus
-  app.$input.on(`mouseenter`, function() {
-    $(`.option.text`).css({ background: `#9FEDD7` });
-    $(this).css({ background: `white` });
+  // Handle on change Style: Chip 
+  $(`button.chip`).on(`click`, function() {
+    app.button["border-radius"].value = `30px`;
+    app.updateButton();
+    app.updateCSS();
   });
 
-  // Handler for when mouse moves over a drop-down menu button
-  app.$drops.on(`mouseenter`, function() {
-    $(this)
-      .parent()
-      .css({ background: `#9FEDD7` });
+  // Handle on change Style: Outline 
+  $(`button.outline`).on(`click`, function() {
+    app.button.background.value = `#FFFFFF`;
+    app.button.border.value = `4px solid ${app.button.color.value}`;
+    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
   });
 
-  // Handler for when mouse moves from a drop-down menu button
-  app.$drops.on(`mouseleave`, function() {
-    app.menuOpen
-      ? ""
-      : $(this)
-          .parent()
-          .css({ background: `white` });
+  // Handle on change Style: None
+  $(`button.none`).on(`click`, function() {
+    app.button["border-bottom"].value = `none`;
+    app.button.border.value = `none`;
+    app.updateButton();
+    app.updateCSS();
   });
 
-  // Handler Apply Text Input
-  app.$input.on(`keyup`, function() {
-    app.updateText($(this).val());
+  // Handle on change Style : Link
+  $(`button.link`).on(`click`, function() {
+    app.button.background.value = `#FFFFFF`;
+    app.button.border.value = `4px solid #FFFFFF`;
+    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
   });
 
-  // Hanlder Style Menu
-  app.$styles.on(`click`, function() {
-    app.toggleMenu(app.$stylesMenu, app.$fills);
-  });
+}
 
-  // Handler Fill Menu
+// All event handlers for Fill
+app.launchFills = function () {
+
+    // Handler Fill Menu
   app.$fills.on(`click`, function() {
     app.toggleMenu(app.$fillsMenu, app.$styles);
   });
@@ -271,49 +267,68 @@ app.init = function() {
     app.updateButton();
     app.updateCSS();
   });
+}
 
-  // Handle on change Style: Square style
-  $(`button.square`).on(`click`, function() {
-    app.button["border-radius"].value = `0`;
-    app.updateButton();
-    app.updateCSS();
+
+app.launchCode = function() {
+  
+}
+
+app.init = function() {
+  app.setup();
+  app.launchStyles();
+  app.launchFills();
+
+  // Handler Banner Button - scrolls to the Button Area
+  $(`header button`).on(`click`, function() {
+    app.scrollToElem(`main`);
   });
 
-  // Handle on change Style: Chip style
-  $(`button.chip`).on(`click`, function() {
-    app.button["border-radius"].value = `30px`;
-    app.updateButton();
-    app.updateCSS();
+  // Handler for switching to css code
+  $(`button.switch`).on(`click`, function() {
+    $(`form.code`).css({
+      "margin-left": `0`,
+    });
+    $(`form.edit .display.icons`).css({
+      visibility: `hidden`
+    });
+    $(`.code .display .preview .cssFormat`)
+    .css("transform", "scale(0.95)");
   });
 
-  // Handle on change Style: Outline style
-  $(`button.outline`).on(`click`, function() {
-    app.button.background.value = `#FFFFFF`;
-    app.button.border.value = `4px solid ${app.button.color.value}`;
-    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
-    app.updatePickers();
-    app.updateButton();
-    app.updateCSS();
+  // Handler Button Text Input Focus
+  app.$input.on(`mouseleave`, function() {
+    $(`.option.text`).css({ background: `white` });
+    $(this).css({ background: `#FCE181` });
   });
 
-  // Handle on change Style: None
-  $(`button.none`).on(`click`, function() {
-    app.button["border-bottom"].value = `none`;
-    app.button.border.value = `none`;
-    app.updateButton();
-    app.updateCSS();
+  // Handler Button Text Input Unfocus
+  app.$input.on(`mouseenter`, function() {
+    $(`.option.text`).css({ background: `#9FEDD7` });
+    $(this).css({ background: `white` });
   });
 
-  // Handle on change Style : Link
-  $(`button.link`).on(`click`, function() {
-    app.button.background.value = `#FFFFFF`;
-    app.button.border.value = `4px solid #FFFFFF`;
-    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
-    app.updatePickers();
-    app.updateButton();
-    app.updateCSS();
+  // Handler for when mouse moves over a drop-down menu button
+  app.$drops.on(`mouseenter`, function() {
+    $(this)
+      .parent()
+      .css({ background: `#9FEDD7` });
   });
 
+  // Handler for when mouse moves from a drop-down menu button
+  app.$drops.on(`mouseleave`, function() {
+    app.menuOpen
+      ? ""
+      : $(this)
+          .parent()
+          .css({ background: `white` });
+  });
+
+  // Handler Apply Text Input
+  app.$input.on(`keyup`, function() {
+    app.updateText($(this).val());
+  });
+  
   // Handler for switching back to button view mode
   $(`button.view`).on(`click`, function() {
     $(`form.code`).css({

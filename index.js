@@ -46,11 +46,11 @@ app.setDefaults = function() {
     color: { value: `#026670`, color: `blue` },
     background: { value: `#D9D1C3`, color: `blue` },
     "font-family": { value: `'Arial', sans-serif`, color: `brown` },
-    "font-size": { value: `16px`, color: `green` },
+    "font-size": { value: `18px`, color: `green` },
     "font-weight": { value: `bold`, color: `blue` },
     "letter-spacing": { value: `1.2`, color: `green` },
     "line-height": { value: `normal`, color: `blue` },
-    "text-align": { value: `center`, color: `blue` }
+    "text-align": { value: `center`, color: `blue` },
   };
 };
 

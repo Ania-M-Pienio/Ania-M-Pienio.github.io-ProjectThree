@@ -646,6 +646,10 @@ form.edit {
   text-align: center;
 }
 
+.selected {
+  background-color: #FEF9C7;
+}
+
 html {
   font-size: 62.5%;
   margin: 0;
@@ -740,4 +744,9 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
   position: relative;
+}
+
+main .option.test,
+main .option.test2 {
+  display: none;
 }

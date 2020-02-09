@@ -236,7 +236,9 @@ app.launchStyles = function() {
     app.updateButton();
     app.updateCSS();
   });
-};
+
+
+}; // end of Styles
 
 // All event handlers for Fill ------------------------------------
 app.launchFills = function() {
@@ -300,7 +302,7 @@ app.launchCode = function() {
       visibility: `visible`
     });
   });
-};
+}; // end of Fills
 
 app.init = function() {
   app.setup();
@@ -348,7 +350,9 @@ app.init = function() {
 
   // ----------------TEST BUTTONS -----------------------------
   // ----------------------------------------------------------
-  $(`.test2 button`).on(`click`, function() {});
+  $(`.test2 button`).on(`click`, function() {
+    // $(this).addClass(`selected`);
+  });
 
   $(`.test button`).on(`click`, function() {});
   // ----------------------------------------------------------

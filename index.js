@@ -2,23 +2,17 @@ const app = {};
 
 // declares variables after doc is ready
 app.variables = function() {
-  //form elements cached as jQuery objects
   app.$button = $(`.preview.edit button`);
   app.$input = $(`input#buttonText`);
-
   app.$drops = $(`.select`);
   app.$styles = $(`button#buttonStyles`);
   app.$fills = $(`button#buttonFills`);
-
   app.$stylesMenu = $(`.stylesMenu`);
   app.$fillsMenu = $(`.fillsMenu`);
-
+  app.$gradient1 = $(`#gradient1`);
+  app.$gradient2 = $(`#gradient2`);
   app.menuOpen = false;
-
-  // object that  - set to default
   app.button = {};
-
-  // stores the current state of the preview button text - set to default
   app.button.text = `button text`;
 }; // end of variables
 
@@ -29,15 +23,23 @@ app.setup = function() {
   app.$input.val(app.button.text);
   app.setDefaults();
   app.updateCSS();
+  app.updatePickers();
+};
+
+app.updatePickers = function() {
+  $(`input.jscolor`).val(app.button.background.value);
+  $(`input.jscolor`).css({
+    background: `${app.button.background.value}`
+  });
 };
 
 // store the current state of  the button's css
 app.setDefaults = function() {
   app.button = {
     width: { value: `200px`, color: `green` },
-    height: { value: `100px`, color: `green` },
+    height: { value: `50px`, color: `green` },
     border: { value: `none`, color: `blue` },
-    color: { value: `#FEF9C7`, color: `blue` },
+    color: { value: `#026670`, color: `blue` },
     background: { value: `#D9D1C3`, color: `blue` },
     "font-family": { value: `'Arial', sans-serif`, color: `brown` },
     "font-size": { value: `16px`, color: `green` },
@@ -91,8 +93,8 @@ app.updateText = function(inputText) {
 
 // scrubs out old css from the button and replaces with new css
 app.updateButton = function() {
-  app.$button.removeClass(`default`); // removes any defaults
-  app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
+  // app.$button.removeClass(`default`); // removes any defaults
+  // app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
   app.$button.css({
     width: `${app.button.width.value}`,
     height: `${app.button.height.value}`,
@@ -110,32 +112,37 @@ app.updateButton = function() {
 
 // jockeys control menu around depending on what is being opended/clicked
 app.toggleMenu = function($menu, $other) {
-  // check if anything open - hide/show the menu as needed - so that the menu goes hidden on the next click
   app.menuOpen
-    ? $menu.css({ display: `none` }) // close it
-    : $menu.css({ display: `block` }); // open it
+    ? $menu.css({ display: `none` })
+    : $menu.css({ display: `block` });
 
-  // toggle (closed to open) or (open to closed)
   app.menuOpen = !app.menuOpen;
 
-  // check if anything open - hide/show the other control as needed
   app.menuOpen
     ? $other
         .css({ display: `none` })
         .prev()
         .css({ display: `none` })
         .parent()
-        .css({ display: `none` }) // make the other button and its label are hidden
+        .css({ display: `none` })
     : $other
         .css({ display: `flex` })
         .prev()
         .css({ display: `block` })
         .parent()
-        .css({ display: `block` }); //  make the other button and its label visible
+        .css({ display: `block` });
 
   app.menuOpen
     ? $menu.parent().css({ background: `#9FEDD7` })
     : $menu.parent().css({ background: `white` });
+};
+
+app.parseGradient = function(hex) {
+  if (hex.charAt(0) === `#`) {
+    return hex.substring(1, hex.length);
+  } else {
+    return hex;
+  }
 };
 
 app.init = function() {
@@ -179,37 +186,41 @@ app.init = function() {
     app.updateText($(this).val());
   });
 
-  // Hanlder Styles Button
+  // Hanlder Styles Buttons
   app.$styles.on(`click`, function() {
-    // sends to toggle - passes the one to activate, and the one to hide
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
-  // Handler Fills Button
+  // Handler Fills Buttons
   app.$fills.on(`click`, function() {
-    //sends to toggle - passes the one to activate, and the one to hide
     app.toggleMenu(app.$fillsMenu, app.$styles);
   });
 
-
-
-  // ----------------TEST BUTTONS -----------------------------
-  // ----------------------------------------------------------
-  $(`.test2 button`).on(`click`, function() {
-    app.button.background.value = `#FCE181`;
-    app.button.border.value = `5px solid #E3430E`;
+  // Handler on change Fill: Color
+  $(`input#color`).on(`change`, function() {
+    app.button.background.value = `#${$(this).val()}`;
+    app.updatePickers();
     app.updateButton();
     app.updateCSS();
   });
 
-  $(`.test button`).on(`click`, function() {
-    app.updateCSS(); 
+  // Handler on change Fill: Gradient
+  $(`.grad`).on(`change`, function() {
+    const grad1 = app.parseGradient(app.$gradient1.val());
+    const grad2 = app.parseGradient(app.$gradient2.val());
+    app.button.background.value = `linear-gradient(to right, #${grad1}, #${grad2})`;
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
   });
 
+  // ----------------TEST BUTTONS -----------------------------
+  // ----------------------------------------------------------
+  $(`.test2 button`).on(`click`, function() {});
+
+  $(`.test button`).on(`click`, function() {});
   // ----------------------------------------------------------
   // ----------------------------------------------------------
-
-
 }; // end of init
 
 $(() => {

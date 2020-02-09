@@ -34,8 +34,6 @@
   }
 }
 
-
-
 .edit .option {
   width: 100%;
   height: auto;
@@ -67,15 +65,41 @@
     display: flex;
     flex-direction: column;
     display: none;
+    button {
+      background-color: white;
+      color: $font;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span.itemOption {
+        width: 70%;
+        border: 2px solid $accent;
+        display: flex;
+        text-decoration: none;
+        input#color {
+          width: 100%;
+          height: 60%;
+          border: none;
+        }
+        input#gradient1,
+        input#gradient2 {
+          width: 50%;
+          border: 2px solid $accent;
+        }
+        
+      }
+      span.item {
+        width: 30%;
+      }
+    }
+    button.noFill {
+      display: block;
+    }
   }
 }
 
-.menu {
-  button {
-    background-color: white;
-    color: $font;
-  }
-}
+
 .edit .option.title .display {
   border: none;
   nav.icon {

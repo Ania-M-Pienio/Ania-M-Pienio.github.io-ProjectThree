@@ -14,6 +14,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./index.js"></script>
+    <script src="jscolor.js"></script>
     <title>clickVIBE</title>
   </head>
   <body>
@@ -59,7 +60,7 @@
             </nav>
 
             <div class="preview edit">
-              <button type="button" class="default">button text</button>
+              <button type="button" class="default chip">button text</button>
             </div>
           </div>
 
@@ -112,10 +113,16 @@
 
               <!-- Style menu -->
               <div role="menu" class="menu stylesMenu">
-                <button role="menuitem" type="button">None</button>
-                <button role="menuitem" type="button">Chip</button>
-                <button role="menuitem" type="button">Outline</button>
-                <button role="menuitem" type="button">Link</button>
+                <button role="menuitem" type="button" class="noStyle clearfix">
+                  <span>No Style</span>
+                </button>
+                <button role="menuitem" type="button" class="chip">
+                  <span>Chip</span>
+                </button>
+                <button role="menuitem" type="button" class="outline">
+                  Outline
+                </button>
+                <button role="menuitem" type="button" class="link">Link</button>
               </div>
             </section>
 
@@ -138,9 +145,19 @@
               </button>
               <!-- Fill menu -->
               <div role="menu" class="menu fillsMenu">
-                <button role="menuitem" type="button">None</button>
-                <button role="menuitem" type="button">Color</button>
-                <button role="menuitem" type="button">Gradient</button>
+                <button role="menuitem" type="button" class="color">
+                  <span class="item">Color</span>
+                  <span class="itemOption">
+                    <input class="jscolor" id="color" />
+                  </span>
+                </button>
+                <button role="menuitem" type="button" class="gradient">
+                  <span class="item">Gradient</span>
+                  <span class="itemOption">
+                    <input class="jscolor grad {valueElement:null}" id="gradient1" />
+                    <input class="jscolor grad {valueElement:null}" id="gradient2" />
+                  </span>
+                </button>
               </div>
             </section>
             <!-- Testing button -->
@@ -167,11 +184,11 @@
 
             <div class="preview code">
               <div class="cssFormat">
-                  <p> <span class="brown">.vibe { </span> </p>
-                    <ul> 
-                    <!-- insert list itmes (css) here-->
-                    </ul>
-                  <p> <span class="brown">} </span> </p>  
+                <p><span class="brown">.vibe { </span></p>
+                <ul>
+                  <!-- insert list itmes (css) here-->
+                </ul>
+                <p><span class="brown">} </span></p>
               </div>
             </div>
           </div>

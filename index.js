@@ -198,6 +198,10 @@ app.launchStyles = function() {
   // Handle on change Style: Square
   $(`button.square`).on(`click`, function() {
     app.button["border-radius"].value = `0`;
+    $(this)
+      .addClass(`selected`)
+      .next()
+      .removeClass(`selected`);
     app.updateButton();
     app.updateCSS();
   });
@@ -205,6 +209,10 @@ app.launchStyles = function() {
   // Handle on change Style: Chip
   $(`button.chip`).on(`click`, function() {
     app.button["border-radius"].value = `30px`;
+    $(this)
+      .addClass(`selected`)
+      .prev()
+      .removeClass(`selected`);
     app.updateButton();
     app.updateCSS();
   });
@@ -214,6 +222,10 @@ app.launchStyles = function() {
     app.button.background.value = `#FFFFFF`;
     app.button.border.value = `4px solid ${app.button.color.value}`;
     app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    $(this)
+      .addClass(`selected`)
+      .next()
+      .removeClass(`selected`);
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
@@ -223,6 +235,10 @@ app.launchStyles = function() {
   $(`button.none`).on(`click`, function() {
     app.button["border-bottom"].value = `none`;
     app.button.border.value = `none`;
+    $(this)
+      .addClass(`selected`)
+      .prev()
+      .removeClass(`selected`);
     app.updateButton();
     app.updateCSS();
   });
@@ -236,8 +252,6 @@ app.launchStyles = function() {
     app.updateButton();
     app.updateCSS();
   });
-
-
 }; // end of Styles
 
 // All event handlers for Fill ------------------------------------
@@ -266,6 +280,10 @@ app.launchFills = function() {
   $(`input#border`).on(`change`, function() {
     app.button.border.value = `4px solid #${$(this).val()}`;
     app.button["border-bottom"].value = app.button.border.value;
+    $(`button.outline`)
+      .addClass(`selected`)
+      .next()
+      .removeClass(`selected`);
     app.updateButton();
     app.updateCSS();
   });

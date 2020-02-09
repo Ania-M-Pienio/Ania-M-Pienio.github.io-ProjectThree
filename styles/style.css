@@ -647,7 +647,7 @@ form.edit {
 }
 
 .selected {
-  background-color: #FEF9C7;
+  background-color: #FEF9C7 !important;
 }
 
 html {

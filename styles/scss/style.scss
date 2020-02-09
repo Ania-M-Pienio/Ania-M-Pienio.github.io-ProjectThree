@@ -4,7 +4,7 @@
 @import "mixins";
 @import "components/header";
 @import "components/form";
-@import "components/display";
+@import "components/code";
 @import "components/edits";
 
 // typography
@@ -89,6 +89,7 @@ main {
   .wrapper {
     padding-top: 5%;
     padding-bottom: 10%;
+    position: relative;
   }
 }
 

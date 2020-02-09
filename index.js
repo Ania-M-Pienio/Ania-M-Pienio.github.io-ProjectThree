@@ -24,16 +24,24 @@ app.setup = function() {
   app.setDefaults();
   app.updateCSS();
   app.updatePickers();
+  $(`.code .display .preview .cssFormat`).css("transform", "scale(0.2)");
 };
 
 app.updatePickers = function() {
-  $(`input.jscolor:not(input#text)`).val(app.button.background.value);
-  $(`input.jscolor:not(input#text)`).css({
+  $(`input.jscolor:not(input#text):not(input#border)`).val(
+    app.parseHex(app.button.background.value)
+  );
+  $(`input.jscolor:not(input#text):not(input#border)`).css({
     background: app.button.background.value
   });
-  $(`input#text`).val(app.button.color.value);
+  $(`input#text`).val(app.parseHex(app.button.color.value));
   $(`input#text`).css({
     background: app.button.color.value
+  });
+
+  $(`input#border`).val(app.parseBorder(app.button.border.value));
+  $(`input#border`).css({
+    background: `#${app.parseBorder(app.button.border.value)}`
   });
 };
 
@@ -41,8 +49,8 @@ app.updatePickers = function() {
 app.setDefaults = function() {
   app.button = {
     width: { value: `200px`, color: `green` },
-    height: { value: `65px`, color: `green` },
-    border: { value: `none`, color: `blue` },
+    height: { value: `60px`, color: `green` },
+    border: { value: `4px solid #D9D1C3`, color: `blue` },
     color: { value: `#026670`, color: `blue` },
     background: { value: `#D9D1C3`, color: `blue` },
     "font-family": { value: `'Arial', sans-serif`, color: `brown` },
@@ -51,6 +59,8 @@ app.setDefaults = function() {
     "letter-spacing": { value: `1.2`, color: `green` },
     "line-height": { value: `normal`, color: `blue` },
     "text-align": { value: `center`, color: `blue` },
+    "border-radius": { value: `0`, color: `blue` },
+    "border-bottom": { value: `none`, color: `blue` }
   };
 };
 
@@ -68,6 +78,7 @@ app.updateCSS = function() {
   } // end of let-in
 }; // end of setCSS
 
+
 // creates a list item as css and returns it
 app.getCSSHtml = function(key, value, color) {
   return `
@@ -80,13 +91,14 @@ app.getCSSHtml = function(key, value, color) {
     `;
 };
 
+
 // scrolls to the element with the given id
 app.scrollToElem = function(id) {
   let element = document.getElementById(id);
   element.scrollIntoView({ behavior: "smooth" });
 };
 
-// replaces the innter text node of the button with the given inputText
+// replaces the innter text node of the button with the given
 app.updateText = function(inputText) {
   // update the variable that stores the button text
   app.button.text = inputText;
@@ -97,8 +109,6 @@ app.updateText = function(inputText) {
 
 // scrubs out old css from the button and replaces with new css
 app.updateButton = function() {
-  // app.$button.removeClass(`default`); // removes any defaults
-  // app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
   app.$button.css({
     width: app.button.width.value,
     height: app.button.height.value,
@@ -111,6 +121,8 @@ app.updateButton = function() {
     "letter-spacing": app.button["letter-spacing"].value,
     "line-height": app.button["line-height"].value,
     "text-align": app.button["text-align"].value,
+    "border-radius": app.button["border-radius"].value,
+    "border-bottom": app.button["border-bottom"].value
   });
 }; // end of updateDisplayButton
 
@@ -141,12 +153,16 @@ app.toggleMenu = function($menu, $other) {
     : $menu.parent().css({ background: `white` });
 };
 
-app.parseGradient = function(hex) {
+app.parseHex = function(hex) {
   if (hex.charAt(0) === `#`) {
     return hex.substring(1, hex.length);
   } else {
     return hex;
   }
+};
+
+app.parseBorder = function(border) {
+  return border.split(`#`)[1];
 };
 
 app.init = function() {
@@ -157,13 +173,36 @@ app.init = function() {
     app.scrollToElem(`main`);
   });
 
+
+  // Handler for switching to css code
+  $(`button.switch`).on(`click`, function() {
+    $(`form.code`).css({
+      "margin-top": `-600px`,
+      display: `block`
+    });
+    $(`form.edit .display.icons`).css({
+      visibility: `hidden`
+    });
+    $(`.code .display .preview .cssFormat`)
+    .css("transform", "scale(1)");
+  });
+
+
+  // Handler for resetting the styling
+  $(`button.title`).on(`click`, function() {
+    app.setDefaults();
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
+  });
+
   // Handler Button Text Input Focus
   app.$input.on(`mouseleave`, function() {
     $(`.option.text`).css({ background: `white` });
     $(this).css({ background: `#FCE181` });
   });
 
-  // Handler Button Text Input Focus
+  // Handler Button Text Input Unfocus
   app.$input.on(`mouseenter`, function() {
     $(`.option.text`).css({ background: `#9FEDD7` });
     $(this).css({ background: `white` });
@@ -185,17 +224,17 @@ app.init = function() {
           .css({ background: `white` });
   });
 
-  // Handler Button Text Engaged
+  // Handler Apply Text Input
   app.$input.on(`keyup`, function() {
     app.updateText($(this).val());
   });
 
-  // Hanlder Styles Buttons
+  // Hanlder Style Menu
   app.$styles.on(`click`, function() {
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
-  // Handler Fills Buttons
+  // Handler Fill Menu
   app.$fills.on(`click`, function() {
     app.toggleMenu(app.$fillsMenu, app.$styles);
   });
@@ -207,7 +246,7 @@ app.init = function() {
     app.updateCSS();
   });
 
-  // Handler on change Fill: Color
+  // Handler on change Fill: Solid
   $(`input#color`).on(`change`, function() {
     app.button.background.value = `#${$(this).val()}`;
     app.updatePickers();
@@ -215,13 +254,73 @@ app.init = function() {
     app.updateCSS();
   });
 
+  // Handler on change Fill: Border
+  $(`input#border`).on(`change`, function() {
+    app.button.border.value = `4px solid #${$(this).val()}`;
+    app.button["border-bottom"].value = app.button.border.value;
+    app.updateButton();
+    app.updateCSS();
+  });
+
   // Handler on change Fill: Gradient
   $(`.grad`).on(`change`, function() {
-    const grad1 = app.parseGradient(app.$gradient1.val());
-    const grad2 = app.parseGradient(app.$gradient2.val());
+    const grad1 = app.parseHex(app.$gradient1.val());
+    const grad2 = app.parseHex(app.$gradient2.val());
     app.button.background.value = `linear-gradient(to right, #${grad1}, #${grad2})`;
     app.updateButton();
     app.updateCSS();
+  });
+
+  // Handle on change Style: Square style
+  $(`button.square`).on(`click`, function() {
+    app.button["border-radius"].value = `0`;
+    app.updateButton();
+    app.updateCSS();
+  });
+
+  // Handle on change Style: Chip style
+  $(`button.chip`).on(`click`, function() {
+    app.button["border-radius"].value = `30px`;
+    app.updateButton();
+    app.updateCSS();
+  });
+
+  // Handle on change Style: Outline style
+  $(`button.outline`).on(`click`, function() {
+    app.button.background.value = `#FFFFFF`;
+    app.button.border.value = `4px solid ${app.button.color.value}`;
+    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
+  });
+
+  // Handle on change Style: None
+  $(`button.none`).on(`click`, function() {
+    app.button["border-bottom"].value = `none`;
+    app.button.border.value = `none`;
+    app.updateButton();
+    app.updateCSS();
+  });
+
+  // Handle on change Style : Link
+  $(`button.link`).on(`click`, function() {
+    app.button.background.value = `#FFFFFF`;
+    app.button.border.value = `4px solid #FFFFFF`;
+    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    app.updatePickers();
+    app.updateButton();
+    app.updateCSS();
+  });
+
+  // Handler for switching back to button view mode
+  $(`button.view`).on(`click`, function() {
+    $(`form.code`).css({
+      display: `none`
+    });
+    $(`form.edit .display.icons`).css({
+      visibility: `visible`
+    });
   });
 
   // ----------------TEST BUTTONS -----------------------------

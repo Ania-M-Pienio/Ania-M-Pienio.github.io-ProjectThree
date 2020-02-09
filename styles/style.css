@@ -379,6 +379,8 @@ form input[type="text"] {
 
 form.code {
   width: 62%;
+  margin-left: -2000px;
+  margin-top: -600px;
 }
 
 .default {
@@ -397,11 +399,11 @@ form.code {
   border-bottom: none;
 }
 
-.code .display .preview {
-  -webkit-transition: -webkit-transform 5s ease-in;
-  transition: -webkit-transform 5s ease-in;
-  transition: transform 5s ease-in;
-  transition: transform 5s ease-in, -webkit-transform 5s ease-in;
+.code .display .preview .cssFormat {
+  -webkit-transition: -webkit-transform 0.8s ease-in;
+  transition: -webkit-transform 0.8s ease-in;
+  transition: transform 0.8s ease-in;
+  transition: transform 0.8s ease-in, -webkit-transform 0.8s ease-in;
 }
 
 .code .display .preview .cssFormat p {

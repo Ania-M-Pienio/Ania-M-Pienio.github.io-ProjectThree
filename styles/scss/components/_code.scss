@@ -18,8 +18,9 @@
 }
 
 form.code {
-  // display: none;
   width: 62%;
+  margin-left: -2000px;
+  margin-top: -600px;
 }
 
 // preview button
@@ -41,8 +42,8 @@ form.code {
 
 
 .code .display .preview {
-  transition: transform 5s ease-in;
   .cssFormat {
+    transition: transform 0.8s ease-in;
     p {
       @include firas(15px, normal, normal, 1.6);     
     }

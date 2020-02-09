@@ -24,8 +24,10 @@ app.setup = function() {
   app.setDefaults();
   app.updateCSS();
   app.updatePickers();
-  $(`.code .display .preview .cssFormat`).css("transform", "scale(0.2)");
+  $(`.code .display .preview .cssFormat`).css("transform", "scale(0.1)");
 };
+
+
 
 app.updatePickers = function() {
   $(`input.jscolor:not(input#text):not(input#border)`).val(
@@ -177,14 +179,13 @@ app.init = function() {
   // Handler for switching to css code
   $(`button.switch`).on(`click`, function() {
     $(`form.code`).css({
-      "margin-top": `-600px`,
-      display: `block`
+      "margin-left": `0`,
     });
     $(`form.edit .display.icons`).css({
       visibility: `hidden`
     });
     $(`.code .display .preview .cssFormat`)
-    .css("transform", "scale(1)");
+    .css("transform", "scale(0.95)");
   });
 
 
@@ -316,7 +317,7 @@ app.init = function() {
   // Handler for switching back to button view mode
   $(`button.view`).on(`click`, function() {
     $(`form.code`).css({
-      display: `none`
+      "margin-left": "-2000px"
     });
     $(`form.edit .display.icons`).css({
       visibility: `visible`

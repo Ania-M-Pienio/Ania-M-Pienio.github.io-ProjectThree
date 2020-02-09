@@ -362,11 +362,10 @@ form input[type="text"] {
 
 .default {
   width: 200px;
-  height: 50px;
+  height: 65px;
   border: none;
-  background-color: #D9D1C3;
   color: #026670;
-  text-decoration: none;
+  background: #D9D1C3;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   font-weight: bold;
@@ -376,8 +375,7 @@ form input[type="text"] {
 }
 
 .chips {
-  border-radius: 30px;
-  border: #D9D1C3;
+  color: #FFFFFF;
 }
 
 .code .display .preview .cssFormat p {
@@ -460,10 +458,6 @@ form input[type="text"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.edit .display .preview button {
-  width: 40%;
 }
 
 .edit .controls {
@@ -563,7 +557,8 @@ form input[type="text"] {
   text-decoration: none;
 }
 
-.edit .option .menu button span.itemOption input#color {
+.edit .option .menu button span.itemOption input#color,
+.edit .option .menu button span.itemOption input#text {
   width: 100%;
   height: 60%;
   border: none;

@@ -27,9 +27,13 @@ app.setup = function() {
 };
 
 app.updatePickers = function() {
-  $(`input.jscolor`).val(app.button.background.value);
-  $(`input.jscolor`).css({
-    background: `${app.button.background.value}`
+  $(`input.jscolor:not(input#text)`).val(app.button.background.value);
+  $(`input.jscolor:not(input#text)`).css({
+    background: app.button.background.value
+  });
+  $(`input#text`).val(app.button.color.value);
+  $(`input#text`).css({
+    background: app.button.color.value
   });
 };
 
@@ -37,7 +41,7 @@ app.updatePickers = function() {
 app.setDefaults = function() {
   app.button = {
     width: { value: `200px`, color: `green` },
-    height: { value: `50px`, color: `green` },
+    height: { value: `65px`, color: `green` },
     border: { value: `none`, color: `blue` },
     color: { value: `#026670`, color: `blue` },
     background: { value: `#D9D1C3`, color: `blue` },
@@ -96,17 +100,17 @@ app.updateButton = function() {
   // app.$button.removeClass(`default`); // removes any defaults
   // app.$button.css("all", "unset"); // start css from scratch - variables will keep track of state
   app.$button.css({
-    width: `${app.button.width.value}`,
-    height: `${app.button.height.value}`,
-    border: `${app.button.border.value}`,
-    color: `${app.button.color.value}`,
-    background: `${app.button.background.value}`,
-    "font-family": `${app.button["font-family"].value}`,
-    "font-size": `${app.button["font-size"].value}`,
-    "font-weight": `${app.button["font-weight"].value}`,
-    "letter-spacing": `${app.button["letter-spacing"].value}`,
-    "line-height": `${app.button["line-height"].value}`,
-    "text-align": `${app.button["text-align"].value}`
+    width: app.button.width.value,
+    height: app.button.height.value,
+    border: app.button.border.value,
+    color: app.button.color.value,
+    background: app.button.background.value,
+    "font-family": app.button["font-family"].value,
+    "font-size": app.button["font-size"].value,
+    "font-weight": app.button["font-weight"].value,
+    "letter-spacing": app.button["letter-spacing"].value,
+    "line-height": app.button["line-height"].value,
+    "text-align": app.button["text-align"].value,
   });
 }; // end of updateDisplayButton
 
@@ -196,6 +200,13 @@ app.init = function() {
     app.toggleMenu(app.$fillsMenu, app.$styles);
   });
 
+  // Handler on change Fill: Text
+  $(`input#text`).on(`change`, function() {
+    app.button.color.value = `#${$(this).val()}`;
+    app.updateButton();
+    app.updateCSS();
+  });
+
   // Handler on change Fill: Color
   $(`input#color`).on(`change`, function() {
     app.button.background.value = `#${$(this).val()}`;
@@ -209,7 +220,6 @@ app.init = function() {
     const grad1 = app.parseGradient(app.$gradient1.val());
     const grad2 = app.parseGradient(app.$gradient2.val());
     app.button.background.value = `linear-gradient(to right, #${grad1}, #${grad2})`;
-    app.updatePickers();
     app.updateButton();
     app.updateCSS();
   });

@@ -1,7 +1,7 @@
 // SPECIFICALLY THE EDITING FORM
 
 form.edit {
-   border-bottom: 50px solid $accent;
+  border-bottom: 50px solid $accent;
 }
 
 // editing display
@@ -113,10 +113,17 @@ form.edit {
     h2 span {
       height: 80%;
       margin-top: 10px;
-
     }
     button {
       height: 100%;
+      &:focus i {
+        color: $bold;
+      }
+      i {
+        &:hover {
+          color: $bold;
+        }
+      }
     }
   }
 }

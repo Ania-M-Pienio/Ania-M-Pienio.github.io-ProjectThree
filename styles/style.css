@@ -641,6 +641,14 @@ form.edit {
   height: 100%;
 }
 
+.edit .option.title .display nav.icon button:focus i {
+  color: #E3430E;
+}
+
+.edit .option.title .display nav.icon button i:hover {
+  color: #E3430E;
+}
+
 .edit .option .stylesMenu button span {
   width: 100%;
   text-align: center;
@@ -686,9 +694,18 @@ input[type="text"] {
   line-height: normal;
 }
 
+button:focus,
+input[type="text"]:focus {
+  border: 6px solid #FCE181;
+}
+
 i {
   color: #026670;
   border: none;
+}
+
+i:hover {
+  color: white;
 }
 
 h1,

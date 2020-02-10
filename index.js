@@ -17,14 +17,14 @@ app.variables = function() {
   app.$gradient2 = $(`#gradient2`);
   app.menuOpen = false;
   app.button = {};
-  app.button.text = `button text`;
+  app.text = `button text`;
 }; // end of variables
 
 // prepares defaults
 app.setup = function() {
   app.variables();
-  app.$button.text(app.button.text);
-  app.$input.val(app.button.text);
+  app.$button.text(app.text);
+  app.$input.val(app.text);
   app.setDefaults();
   $(`.code .display .preview .cssFormat`).css("transform", "scale(0.1)");
 };
@@ -36,10 +36,10 @@ app.setup = function() {
 // replaces the text that appears on the button
 app.updateText = function(inputText) {
   // [1] updates the variable that stores the button text
-  app.button.text = inputText;
+  app.text = inputText;
 
   // [2] update the UI with the stored button text
-  app.$button.text(app.button.text);
+  app.$button.text(app.text);
 };
 
 // set the default state of the button's css
@@ -178,7 +178,7 @@ app.parseHex = function(hex) {
   }
 };
 
-// extracts the color hex without the '#' from border css
+// extracts the color hex without the '#' from  a border string
 app.parseBorder = function(border) {
   return border.split(`#`)[1];
 };
@@ -193,6 +193,7 @@ app.launchStyles = function() {
   // Handler for resetting the styling
   $(`button.title`).on(`click`, function() {
     app.setDefaults();
+    $(`.stylesMenu button`).removeClass(`selected`);
   });
 
   // Handle on change Style: Square
@@ -225,13 +226,15 @@ app.launchStyles = function() {
     $(this)
       .addClass(`selected`)
       .next()
+      .removeClass(`selected`)
+      .next()
       .removeClass(`selected`);
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
   });
 
-  // Handle on change Style: None
+  // Handle on change Style: No Outline
   $(`button.none`).on(`click`, function() {
     app.button["border-bottom"].value = `none`;
     app.button.border.value = `none`;
@@ -248,6 +251,8 @@ app.launchStyles = function() {
     app.button.background.value = `#FFFFFF`;
     app.button.border.value = `4px solid #FFFFFF`;
     app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    $(this).addClass(`selected`);
+    $(`button.none`).removeClass(`selected`);        
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
@@ -296,7 +301,7 @@ app.launchFills = function() {
     app.updateButton();
     app.updateCSS();
   });
-};
+}; // end of Fills
 
 // All event handlers for viewing the css code ---------------------
 app.launchCode = function() {
@@ -320,7 +325,7 @@ app.launchCode = function() {
       visibility: `visible`
     });
   });
-}; // end of Fills
+}; 
 
 app.init = function() {
   app.setup();

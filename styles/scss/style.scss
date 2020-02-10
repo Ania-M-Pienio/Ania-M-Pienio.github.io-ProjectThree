@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Code|Josefin+Sans:700|Libre+Franklin|Noto+Serif:400i&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fira+Code|Josefin+Sans:700|Libre+Franklin|Noto+Serif:400i&display=swap");
 @import "setup";
 @import "variables";
 @import "mixins";
@@ -41,12 +41,17 @@ input[type="text"] {
   text-decoration: none;
   display: block;
   @include franks(16px, bold, normal, normal);
-}
-
-  i {
-    color: $font;
-    border: none;
+  &:focus {
+    border: 6px solid $highlight;
   }
+}
+i {
+  color: $font;
+  border: none;
+  &:hover {
+    color: white;
+  }
+}
 
 // headings
 h1,
@@ -58,7 +63,6 @@ h4 {
 }
 
 h1 {
-
   @include joses(62px, bold, 1px, 40px);
 }
 

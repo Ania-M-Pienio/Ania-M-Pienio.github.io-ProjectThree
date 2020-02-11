@@ -6,6 +6,8 @@ const app = {};
 
 // declares variables after doc is ready
 app.variables = function() {
+  app.button = {};
+  app.menuOpen = false;
   app.$button = $(`.preview.edit button`);
   app.$input = $(`input#buttonText`);
   app.$drops = $(`.select`);
@@ -15,14 +17,15 @@ app.variables = function() {
   app.$fillsMenu = $(`.fillsMenu`);
   app.$gradient1 = $(`#gradient1`);
   app.$gradient2 = $(`#gradient2`);
-  app.menuOpen = false;
-  app.button = {};
   app.text = `button text`;
 }; // end of variables
 
 // prepares defaults
 app.setup = function() {
-  app.variables();
+  // Handler Banner Button - scrolls to the Button Area
+  $(`header button`).on(`click`, function() {
+    app.scrollToElem(`main`);
+  });
   app.$button.text(app.text);
   app.$input.val(app.text);
   app.setDefaults();
@@ -44,6 +47,7 @@ app.updateText = function(inputText) {
 
 // set the default state of the button's css
 app.setDefaults = function() {
+  // [1]  sets default values for the button when not customized
   app.button = {
     width: { value: `200px`, color: `green` },
     height: { value: `60px`, color: `green` },
@@ -59,6 +63,7 @@ app.setDefaults = function() {
     "border-radius": { value: `0`, color: `blue` },
     "border-bottom": { value: `none`, color: `blue` }
   };
+  // [2]  update all UI to reflect the default values
   app.updatePickers();
   app.updateButton();
   app.updateCSS();
@@ -83,12 +88,12 @@ app.updateButton = function() {
   });
 }; // end of updateButton
 
-// removes old list items and adds new list-items into the code display
+// removes old list items and adds new list-items into the css code display
 app.updateCSS = function() {
   const $list = $(`ul`);
   $list.html(``);
   for (let cssItem in app.button) {
-    let listItem = this.getCSSHtml(
+    const listItem = this.getCSSHtml(
       cssItem,
       app.button[cssItem].value,
       app.button[cssItem].color
@@ -165,7 +170,7 @@ app.toggleMenu = function($menu, $other) {
 
 // scrolls to the element with the given id
 app.scrollToElem = function(id) {
-  let element = document.getElementById(id);
+  const element = document.getElementById(id);
   element.scrollIntoView({ behavior: "smooth" });
 };
 
@@ -183,14 +188,77 @@ app.parseBorder = function(border) {
   return border.split(`#`)[1];
 };
 
-// All event handlers for Style -------------------------------------
-app.launchStyles = function() {
+/****************************************************************/
+/*****************          HANDLERS          *******************/
+/****************************************************************/
+
+
+app.handlersAccessibility = function() {
+
+  // Handler to style a parent upon child's focus
+  app.$input.focus(function() {
+    $(this)
+      .parent()
+      .parent()
+      .css({
+        background: `#9FEDD7`
+      });
+  });
+
+  // Handler to style a parent upon child's focus
+  app.$input.focusout(function() {
+    $(this)
+      .parent()
+      .parent()
+      .css({
+        background: `white`
+      });
+  });
+
+   // Handler to style a parent upon child's focus
+  $(`.select`).focus(function() {
+    $(this)
+      .parent()
+      .css({
+        background: `#9FEDD7`
+      });
+  });
+
+    // Handler to style a parent upon child's focus
+  $(`.select`).focusout(function() {
+    $(this)
+      .parent()
+      .css({
+        background: `white`
+      });
+  });
+
+
+
+}
+
+
+// All event handlers for the Input for Button Text -------------------------------
+app.hanldersText = function() {
+ 
+ 
+
+  // Handler Apply Text Input
+  app.$input.on(`keyup`, function() {
+    app.updateText($(this).val());
+  });
+};
+
+// All event handlers for Style Menu -------------------------------------
+app.handlersStyles = function() {
+
   // Hanlder Style Menu
   app.$styles.on(`click`, function() {
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
-  // Handler for resetting the styling
+  
+  // Handler for resetting the form
   $(`button.title`).on(`click`, function() {
     app.setDefaults();
     $(`.stylesMenu button`).removeClass(`selected`);
@@ -252,15 +320,15 @@ app.launchStyles = function() {
     app.button.border.value = `4px solid #FFFFFF`;
     app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
     $(this).addClass(`selected`);
-    $(`button.none`).removeClass(`selected`);        
+    $(`button.none`).removeClass(`selected`);
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
   });
 }; // end of Styles
 
-// All event handlers for Fill ------------------------------------
-app.launchFills = function() {
+// All event handlers for Fill Menu ------------------------------------
+app.handlersFills = function() {
   // Handler Fill Menu
   app.$fills.on(`click`, function() {
     app.toggleMenu(app.$fillsMenu, app.$styles);
@@ -304,7 +372,7 @@ app.launchFills = function() {
 }; // end of Fills
 
 // All event handlers for viewing the css code ---------------------
-app.launchCode = function() {
+app.handlersCCSView = function() {
   // Handler for switching to css code
   $(`button.switch`).on(`click`, function() {
     $(`form.code`).css({
@@ -325,51 +393,17 @@ app.launchCode = function() {
       visibility: `visible`
     });
   });
-}; 
+};
 
 app.init = function() {
+  app.variables();
   app.setup();
-  app.launchStyles();
-  app.launchFills();
-  app.launchCode();
+  app.handlersAccessibility()
+  app.hanldersText();
+  app.handlersStyles();
+  app.handlersFills();
+  app.handlersCCSView();
 
-  // Handler Banner Button - scrolls to the Button Area
-  $(`header button`).on(`click`, function() {
-    app.scrollToElem(`main`);
-  });
-
-  // Handler Button Text Input Focus
-  app.$input.on(`mouseleave`, function() {
-    $(`.option.text`).css({ background: `white` });
-    $(this).css({ background: `#FCE181` });
-  });
-
-  // Handler Button Text Input Unfocus
-  app.$input.on(`mouseenter`, function() {
-    $(`.option.text`).css({ background: `#9FEDD7` });
-    $(this).css({ background: `white` });
-  });
-
-  // Handler for when mouse moves over a drop-down menu button
-  app.$drops.on(`mouseenter`, function() {
-    $(this)
-      .parent()
-      .css({ background: `#9FEDD7` });
-  });
-
-  // Handler for when mouse moves from a drop-down menu button
-  app.$drops.on(`mouseleave`, function() {
-    app.menuOpen
-      ? ""
-      : $(this)
-          .parent()
-          .css({ background: `white` });
-  });
-
-  // Handler Apply Text Input
-  app.$input.on(`keyup`, function() {
-    app.updateText($(this).val());
-  });
 
   // ----------------TEST BUTTONS -----------------------------
   // ----------------------------------------------------------

@@ -513,12 +513,24 @@ form.edit {
   border-left: 8px solid #9FEDD7;
 }
 
+.edit .option.text:hover input {
+  background-color: white;
+}
+
+.edit .option.text input:focus {
+  background-color: white;
+}
+
 .edit .option {
   width: 100%;
   height: auto;
   padding: 5%;
   -webkit-transition: background 1s;
   transition: background 1s;
+}
+
+.edit .option:hover {
+  background-color: #9FEDD7;
 }
 
 .edit .option .select {
@@ -643,6 +655,10 @@ form.edit {
 
 .edit .option.title .display nav.icon button:focus i {
   color: #E3430E;
+}
+
+.edit .option.title .display nav.icon button i {
+  color: #026670;
 }
 
 .edit .option.title .display nav.icon button i:hover {

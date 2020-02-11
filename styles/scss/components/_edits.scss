@@ -35,11 +35,23 @@ form.edit {
   }
 }
 
+.edit .option.text:hover input {
+  background-color: white;
+}
+
+.edit .option.text input:focus {
+  background-color: white;
+}
+
+
 .edit .option {
   width: 100%;
   height: auto;
   padding: 5%;
   transition: background 1s;
+  &:hover {
+    background-color: $accent;
+  } 
   // drop-down button
   .select {
     display: flex;
@@ -50,6 +62,7 @@ form.edit {
       text-align: left;
       margin-left: 2%;
     }
+
     // icon on the drop-down button
     .icon {
       flex: 1; /* in relation to .text */
@@ -120,6 +133,7 @@ form.edit {
         color: $bold;
       }
       i {
+        color: $font;
         &:hover {
           color: $bold;
         }

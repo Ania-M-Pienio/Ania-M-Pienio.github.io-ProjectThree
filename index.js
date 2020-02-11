@@ -71,6 +71,7 @@ app.setDefaults = function() {
 
 // replaces old css with new css into button display
 app.updateButton = function() {
+  console.log(`called updateButton`);
   app.$button.css({
     width: app.button.width.value,
     height: app.button.height.value,
@@ -351,9 +352,12 @@ app.handlersFills = function() {
 
   // Handler on change Fill: Border
   $(`input#border`).on(`change`, function() {
-    app.button.border.value = `4px solid #${$(this).val()}`;
+    app.button.border.value = `4px solid ${$(this)
+      .val()
+      .toUpperCase()}`;
     app.button["border-bottom"].value = app.button.border.value;
-    $(`button.outline`)
+    // this just styles the Styles: Outline option to show as selcted automatically because applying border color, and the No Outline becomes unselected
+    $(`.option.style button.outline`)
       .addClass(`selected`)
       .next()
       .removeClass(`selected`);
@@ -408,10 +412,15 @@ app.init = function() {
   // ----------------TEST BUTTONS -----------------------------
   // ----------------------------------------------------------
   $(`.test2 button`).on(`click`, function() {
-    // $(this).addClass(`selected`);
+
   });
 
-  $(`.test button`).on(`click`, function() {});
+  $(`.test button`).on(`click`, function() {
+
+        const border = $(`input#border`).val();
+        console.log(border);
+
+  });
   // ----------------------------------------------------------
   // ----------------------------------------------------------
 }; // end of init

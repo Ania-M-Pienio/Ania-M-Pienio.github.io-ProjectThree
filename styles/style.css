@@ -602,6 +602,11 @@ form.edit {
   text-decoration: none;
 }
 
+.edit .option .menu button span.itemOption input {
+  padding: 0;
+  margin: 0;
+}
+
 .edit .option .menu button span.itemOption input#color,
 .edit .option .menu button span.itemOption input#text,
 .edit .option .menu button span.itemOption input#border {
@@ -609,10 +614,21 @@ form.edit {
   border: none;
 }
 
+.edit .option .menu button span.itemOption input#color:focus,
+.edit .option .menu button span.itemOption input#text:focus,
+.edit .option .menu button span.itemOption input#border:focus {
+  border: 2px solid #FCE181;
+}
+
 .edit .option .menu button span.itemOption input#gradient1,
 .edit .option .menu button span.itemOption input#gradient2 {
   width: 50%;
   border: 2px solid #9FEDD7;
+}
+
+.edit .option .menu button span.itemOption input#gradient1:focus,
+.edit .option .menu button span.itemOption input#gradient2:focus {
+  border: 2px solid #FCE181;
 }
 
 .edit .option .menu button span.item {
@@ -777,4 +793,9 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
   position: relative;
+}
+
+main .option.test,
+main .option.test2 {
+  display: none;
 }

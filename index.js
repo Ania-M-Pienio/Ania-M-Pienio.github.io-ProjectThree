@@ -106,20 +106,9 @@ app.updateCSS = function() {
 // updates the values and background color of the color pickers on fill menu
 app.updatePickers = function() {
   $(`input.jscolor:not(input#text):not(input#border)`).val(
-    app.parseHex(app.button.background.value)
-  );
-  $(`input.jscolor:not(input#text):not(input#border)`).css({
-    background: app.button.background.value
-  });
-  $(`input#text`).val(app.parseHex(app.button.color.value));
-  $(`input#text`).css({
-    background: app.button.color.value
-  });
-
+    app.button.background.value);
+  $(`input#text`).val(app.button.color.value);
   $(`input#border`).val(app.parseBorder(app.button.border.value));
-  $(`input#border`).css({
-    background: `#${app.parseBorder(app.button.border.value)}`
-  });
 };
 
 /****************************************************************/
@@ -142,7 +131,7 @@ app.getCSSHtml = function(key, value, color) {
 /*****************           HELPERS          *******************/
 /****************************************************************/
 
-// jockeys control menu around depending on what is being opended/clicked
+// moves drop-down buttons around depending on what is being opended/clicked
 app.toggleMenu = function($menu, $other) {
   app.menuOpen
     ? $menu.css({ display: `none` })
@@ -175,18 +164,9 @@ app.scrollToElem = function(id) {
   element.scrollIntoView({ behavior: "smooth" });
 };
 
-// removes the '#' from a color hex
-app.parseHex = function(hex) {
-  if (hex.charAt(0) === `#`) {
-    return hex.substring(1, hex.length);
-  } else {
-    return hex;
-  }
-};
-
-// extracts the color hex without the '#' from  a border string
+// extracts the color hex from  a border string
 app.parseBorder = function(border) {
-  return border.split(`#`)[1];
+  return border.split(` `)[2];
 };
 
 /****************************************************************/
@@ -233,17 +213,12 @@ app.handlersAccessibility = function() {
         background: `white`
       });
   });
-
-
-
 }
 
 
 // All event handlers for the Input for Button Text -------------------------------
 app.hanldersText = function() {
  
- 
-
   // Handler Apply Text Input
   app.$input.on(`keyup`, function() {
     app.updateText($(this).val());
@@ -337,14 +312,14 @@ app.handlersFills = function() {
 
   // Handler on change Fill: Text
   $(`input#text`).on(`change`, function() {
-    app.button.color.value = `#${$(this).val()}`;
+    app.button.color.value = $(this).val();
     app.updateButton();
     app.updateCSS();
   });
 
   // Handler on change Fill: Solid
   $(`input#color`).on(`change`, function() {
-    app.button.background.value = `#${$(this).val()}`;
+    app.button.background.value = $(this).val();
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
@@ -356,7 +331,7 @@ app.handlersFills = function() {
       .val()
       .toUpperCase()}`;
     app.button["border-bottom"].value = app.button.border.value;
-    // this just styles the Styles: Outline option to show as selcted automatically because applying border color, and the No Outline becomes unselected
+    // this just styles the Outline option (on Style menu) to show as selcted automatically because applying border color means you are applying outline, and the No Outline becomes unselected
     $(`.option.style button.outline`)
       .addClass(`selected`)
       .next()
@@ -367,9 +342,9 @@ app.handlersFills = function() {
 
   // Handler on change Fill: Gradient
   $(`.grad`).on(`change`, function() {
-    const grad1 = app.parseHex(app.$gradient1.val());
-    const grad2 = app.parseHex(app.$gradient2.val());
-    app.button.background.value = `linear-gradient(to right, #${grad1}, #${grad2})`;
+    const grad1 = app.$gradient1.val();
+    const grad2 = app.$gradient2.val();
+    app.button.background.value = `linear-gradient(to right, ${grad1}, ${grad2})`;
     app.updateButton();
     app.updateCSS();
   });

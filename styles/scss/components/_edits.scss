@@ -43,7 +43,6 @@ form.edit {
   background-color: white;
 }
 
-
 .edit .option {
   width: 100%;
   height: auto;
@@ -51,7 +50,7 @@ form.edit {
   transition: background 1s;
   &:hover {
     background-color: $accent;
-  } 
+  }
   // drop-down button
   .select {
     display: flex;
@@ -92,17 +91,26 @@ form.edit {
         border: 2px solid $accent;
         display: flex;
         text-decoration: none;
+        input {
+          padding: 0;
+          margin: 0;
+        }
         input#color,
         input#text,
         input#border {
           width: 100%;
-          // height: 100%;
           border: none;
+          &:focus {
+            border: 2px solid $highlight;
+          }
         }
         input#gradient1,
         input#gradient2 {
           width: 50%;
           border: 2px solid $accent; // nice divider between the two gradients
+          &:focus {
+            border: 2px solid $highlight;
+          }
         }
       }
       span.item {

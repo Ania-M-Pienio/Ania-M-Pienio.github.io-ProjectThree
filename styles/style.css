@@ -339,78 +339,45 @@ form input[type="text"] {
   transition: background 1s;
 }
 
-.code {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  /* this can be applied with javaScript on show */
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.display.icons.code {
+  width: 50%;
+  position: absolute;
+  margin-left: -2000px;
+  top: 0;
+  left: 0;
 }
 
-.code .display {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+.display.icons.code nav.icon {
+  width: 100%;
+  background-color: white;
+  border-bottom: 6px solid #9FEDD7;
 }
 
-.code .display nav.icon {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+.display.icons.code nav.icon button {
+  border: 6px solid white;
+  padding: 0;
 }
 
-.code .display nav.icon button.copy {
+.display.icons.code nav.icon button i:hover {
+  color: #9FEDD7;
+}
+
+.display.icons.code nav.icon button:focus {
+  border: 6px solid #FCE181;
+}
+
+.display.icons.code nav.icon button.copy {
   position: relative;
 }
 
-.code .display .preview {
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
-  height: 100%;
-  padding: 2.5%;
-}
-
-form.code {
-  width: 62%;
-  margin-left: -2000px;
-  margin-top: -600px;
-}
-
-.default {
-  width: 200px;
-  height: 60px;
-  border: 4px solid #D9D1C3;
-  color: #026670;
-  background: #D9D1C3;
-  font-family: "Arial", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 1.2;
-  line-height: normal;
-  text-align: center;
-  border-radius: none;
-  border-bottom: none;
-}
-
-.code .display .preview .cssFormat {
+.display.icons.code .preview .cssFormat {
   -webkit-transition: -webkit-transform 0.8s ease-in;
   transition: -webkit-transform 0.8s ease-in;
   transition: transform 0.8s ease-in;
   transition: transform 0.8s ease-in, -webkit-transform 0.8s ease-in;
 }
 
-.code .display .preview .cssFormat p {
+.display.icons.code .preview .cssFormat p {
   font-family: "Fira Code", monospace;
   font-size: 15px;
   font-weight: normal;
@@ -418,7 +385,7 @@ form.code {
   line-height: 1.6;
 }
 
-.code .display .preview span.red {
+.display.icons.code .preview span.red {
   color: #ec3737;
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -427,7 +394,7 @@ form.code {
   line-height: 1.6;
 }
 
-.code .display .preview span.brown {
+.display.icons.code .preview span.brown {
   color: #5a3f3f;
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -436,7 +403,7 @@ form.code {
   line-height: 1.6;
 }
 
-.code .display .preview span.green {
+.display.icons.code .preview span.green {
   color: #718a71;
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -445,7 +412,7 @@ form.code {
   line-height: 1.6;
 }
 
-.code .display .preview span.blue {
+.display.icons.code .preview span.blue {
   color: #217cc7;
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -460,14 +427,7 @@ form.code {
   display: none;
 }
 
-.toaster {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.display.icons.code .toaster {
   display: none;
   width: 200px;
   height: 40px;
@@ -476,15 +436,17 @@ form.code {
   left: 40px;
   color: #9FEDD7;
   background: #000b0c;
+  opacity: 0.8;
 }
 
-.toaster h4 {
-  padding: 5%;
+.display.icons.code .toaster h4 {
+  margin: 5px;
   font-size: 18px;
 }
 
 form.edit {
   border-bottom: 50px solid #9FEDD7;
+  position: relative;
 }
 
 .edit {
@@ -546,130 +508,12 @@ form.edit {
   border-left: 8px solid #9FEDD7;
 }
 
-.edit .option.text:hover input {
+.edit .controls .option.text:hover input {
   background-color: white;
 }
 
-.edit .option.text input:focus {
+.edit .controls .option.text input:focus {
   background-color: white;
-}
-
-.edit .option {
-  width: 100%;
-  height: auto;
-  padding: 5%;
-  -webkit-transition: background 1s;
-  transition: background 1s;
-}
-
-.edit .option:hover {
-  background-color: #9FEDD7;
-}
-
-.edit .option .select {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.edit .option .select .text {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-  /* in relation to .icon */
-  text-align: left;
-  margin-left: 2%;
-}
-
-.edit .option .select .icon {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  /* in relation to .text */
-  display: inline-block;
-  text-align: right;
-}
-
-.edit .option .select .icon i {
-  color: #FEF9C7;
-}
-
-.edit .option .menu {
-  width: 100%;
-  height: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  display: none;
-}
-
-.edit .option .menu button {
-  background-color: white;
-  color: #026670;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.edit .option .menu button span.itemOption {
-  width: 70%;
-  height: auto;
-  border: 2px solid #9FEDD7;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-decoration: none;
-}
-
-.edit .option .menu button span.itemOption input {
-  padding: 0;
-  margin: 0;
-}
-
-.edit .option .menu button span.itemOption input#color,
-.edit .option .menu button span.itemOption input#text,
-.edit .option .menu button span.itemOption input#border {
-  width: 100%;
-  border: none;
-}
-
-.edit .option .menu button span.itemOption input#color:focus,
-.edit .option .menu button span.itemOption input#text:focus,
-.edit .option .menu button span.itemOption input#border:focus {
-  border: 2px solid #FCE181;
-}
-
-.edit .option .menu button span.itemOption input#gradient1,
-.edit .option .menu button span.itemOption input#gradient2 {
-  width: 50%;
-  border: 2px solid #9FEDD7;
-}
-
-.edit .option .menu button span.itemOption input#gradient1:focus,
-.edit .option .menu button span.itemOption input#gradient2:focus {
-  border: 2px solid #FCE181;
-}
-
-.edit .option .menu button span.item {
-  width: 30%;
-}
-
-.edit .option .menu button.noFill {
-  display: block;
 }
 
 .edit .option.title .display {
@@ -714,6 +558,124 @@ form.edit {
   color: #E3430E;
 }
 
+.edit .controls .option {
+  width: 100%;
+  height: auto;
+  padding: 5%;
+  -webkit-transition: background 1s;
+  transition: background 1s;
+}
+
+.edit .controls .option:hover {
+  background-color: #9FEDD7;
+}
+
+.edit .controls .option .select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit .controls .option .select .text {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  /* in relation to .icon */
+  text-align: left;
+  margin-left: 2%;
+}
+
+.edit .controls .option .select .icon {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  /* in relation to .text */
+  display: inline-block;
+  text-align: right;
+}
+
+.edit .controls .option .select .icon i {
+  color: #FEF9C7;
+}
+
+.edit .controls .option .menu {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+}
+
+.edit .controls .option .menu button {
+  background-color: white;
+  color: #026670;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit .controls .option .menu button span.itemOption {
+  width: 70%;
+  height: auto;
+  border: 2px solid #9FEDD7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+}
+
+.edit .controls .option .menu button span.itemOption input {
+  padding: 0;
+  margin: 0;
+}
+
+.edit .controls .option .menu button span.itemOption input#color,
+.edit .controls .option .menu button span.itemOption input#text,
+.edit .controls .option .menu button span.itemOption input#border {
+  width: 100%;
+  border: none;
+}
+
+.edit .controls .option .menu button span.itemOption input#color:focus,
+.edit .controls .option .menu button span.itemOption input#text:focus,
+.edit .controls .option .menu button span.itemOption input#border:focus {
+  border: 2px solid #FCE181;
+}
+
+.edit .controls .option .menu button span.itemOption input#gradient1,
+.edit .controls .option .menu button span.itemOption input#gradient2 {
+  width: 50%;
+  border: 2px solid #9FEDD7;
+}
+
+.edit .controls .option .menu button span.itemOption input#gradient1:focus,
+.edit .controls .option .menu button span.itemOption input#gradient2:focus {
+  border: 2px solid #FCE181;
+}
+
+.edit .controls .option .menu button span.item {
+  width: 30%;
+}
+
+.edit .controls .option .menu button.noFill {
+  display: block;
+}
+
 .edit .option .stylesMenu button span {
   width: 100%;
   text-align: center;
@@ -721,6 +683,22 @@ form.edit {
 
 .selected {
   background-color: #FEF9C7 !important;
+}
+
+.default {
+  width: 200px;
+  height: 60px;
+  border: 4px solid #d9d1c3;
+  color: #026670;
+  background: #D9D1C3;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1.2;
+  line-height: normal;
+  text-align: center;
+  border-radius: none;
+  border-bottom: 4px solid #d9d1c3;
 }
 
 html {
@@ -761,6 +739,11 @@ input[type="text"] {
 
 button:focus,
 input[type="text"]:focus {
+  border: 6px solid #FCE181;
+}
+
+button:hover,
+input[type="text"]:hover {
   border: 6px solid #FCE181;
 }
 

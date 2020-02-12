@@ -18,6 +18,7 @@ app.variables = function() {
   app.$gradient1 = $(`#gradient1`);
   app.$gradient2 = $(`#gradient2`);
   app.text = `button text`;
+  app.switchHtml = ``;
   app.clipboard = ``;
 }; // end of variables
 
@@ -30,7 +31,10 @@ app.setup = function() {
   app.$button.text(app.text);
   app.$input.val(app.text);
   app.setDefaults();
-  $(`.code .display .preview .cssFormat`).css("transform", "scale(0.1)");
+  $(`form.edit .display.icons.code .preview .cssFormat`).css(
+    "transform",
+    "scale(0.1)"
+  );
 };
 
 /****************************************************************/
@@ -182,11 +186,17 @@ app.copyCSS = function() {
   text[0].setSelectionRange(0, 99999); // for mobile
   document.execCommand(`copy`);
 
-  $(`.toaster`).show(`fast`).css({display: `flex`});
+  $(`.toaster`)
+    .show(`fast`)
+    .css({
+      display: `flex`,
+      "flex-direction": `column`,
+      "justify-content": `center`
+    });
   setTimeout(() => {
     $(`.toaster`).hide(`slow`);
     $(`button.copy`).blur(); // triggers an unfocus
-  }, 3000);
+  }, 2000);
 };
 
 /****************************************************************/
@@ -195,6 +205,7 @@ app.copyCSS = function() {
 
 app.handlersAccessibility = function() {
   // Handler to style a parent upon child's focus
+  // Textbox
   app.$input.focus(function() {
     $(this)
       .parent()
@@ -205,6 +216,7 @@ app.handlersAccessibility = function() {
   });
 
   // Handler to style a parent upon child's focus
+  // Textbox
   app.$input.focusout(function() {
     $(this)
       .parent()
@@ -215,6 +227,7 @@ app.handlersAccessibility = function() {
   });
 
   // Handler to style a parent upon child's focus
+  // List or Style Menu Button
   $(`.select`).focus(function() {
     $(this)
       .parent()
@@ -224,14 +237,30 @@ app.handlersAccessibility = function() {
   });
 
   // Handler to style a parent upon child's focus
+  // List or Style Menu Button
+
+
   $(`.select`).focusout(function() {
+      $(this)
+        .parent()
+        .css({
+          background: `white`
+        });
+  });
+
+  // Handler to style parent upon child's focus
+  // all drop-down option buttons
+
+  $(`button[role=menuitem]`).focus(function() {
     $(this)
       .parent()
-      .css({
-        background: `white`
-      });
+      .parent()
+      .css({ background: `#9FEDD7` });
   });
-};
+
+
+
+} // end of Accessibility Handlers
 
 // All event handlers for the Input for Button Text -------------------------------
 app.hanldersText = function() {
@@ -317,7 +346,7 @@ app.handlersStyles = function() {
   });
 }; // end of Styles
 
-// All event handlers for Fill Menu ------------------------------------
+// All event handlers for Fill Menu ----------------------------------------------------
 app.handlersFills = function() {
   // Handler Fill Menu
   app.$fills.on(`click`, function() {
@@ -364,30 +393,31 @@ app.handlersFills = function() {
   });
 }; // end of Fills
 
-// All event handlers for viewing the css code ---------------------
+// All event handlers for viewing the Code: CSS -------------------------------------------------------
 app.handlersCCSView = function() {
   // Handler for switching to css code
   $(`button.switch`).on(`click`, function() {
-    $(`form.code`).css({
-      "margin-left": `0`
+    $(`form.edit .display.icons.code`).css({
+      "margin-left": `10px`
     });
-    $(`form.edit .display.icons`).css({
+    $(`form.edit .display.icons.view`).css({
       visibility: `hidden`
     });
-    $(`.code .display .preview .cssFormat`).css("transform", "scale(0.95)");
+    $(`form.edit .display.icons.code .preview .cssFormat`).css(
+      "transform",
+      "scale(0.95)"
+    );
   });
 
   // Handler for switching back to button view mode
   $(`button.view`).on(`click`, function() {
-    $(`form.code`).css({
+    $(`form.edit .icons.code`).css({
       "margin-left": "-2000px"
     });
-    $(`form.edit .display.icons`).css({
+    $(`form.edit .display.icons.view`).css({
       visibility: `visible`
     });
   });
-
-  
 
   $(`button.copy`).on(`click`, function() {
     app.copyCSS();

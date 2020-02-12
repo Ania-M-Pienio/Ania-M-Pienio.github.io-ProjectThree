@@ -1,10 +1,10 @@
-// SPECIFICALLY THE EDITING FORM
+// EDIT DISPLAY
 
 form.edit {
   border-bottom: 50px solid $accent;
+  position: relative;
 }
 
-// editing display
 .edit {
   display: flex;
   // display area
@@ -22,105 +22,27 @@ form.edit {
       align-items: center;
     }
   }
-  // editing controls
-  .controls {
-    flex: 2;
-    flex-basis: 150px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: white;
-    border-left: 8px solid $accent;
-  }
 }
 
-.edit .option.text:hover input {
+// EDIT CONTROLS
+
+.edit .controls {
+  flex: 2;
+  flex-basis: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+  border-left: 8px solid $accent;
+}
+
+.edit .controls .option.text:hover input {
   background-color: white;
 }
 
-.edit .option.text input:focus {
+.edit .controls .option.text input:focus {
   background-color: white;
-}
-
-.edit .option {
-  width: 100%;
-  height: auto;
-  padding: 5%;
-  transition: background 1s;
-  &:hover {
-    background-color: $accent;
-  }
-  // drop-down button
-  .select {
-    display: flex;
-    align-items: center;
-    // text on the drop-down button
-    .text {
-      flex: 3; /* in relation to .icon */
-      text-align: left;
-      margin-left: 2%;
-    }
-
-    // icon on the drop-down button
-    .icon {
-      flex: 1; /* in relation to .text */
-      display: inline-block;
-      text-align: right;
-      i {
-        color: $pop;
-      }
-    }
-  }
-  .menu {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    display: none;
-    button {
-      background-color: white;
-      color: $font;
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      span.itemOption {
-        width: 70%;
-        height: auto;
-        border: 2px solid $accent;
-        display: flex;
-        text-decoration: none;
-        input {
-          padding: 0;
-          margin: 0;
-        }
-        input#color,
-        input#text,
-        input#border {
-          width: 100%;
-          border: none;
-          &:focus {
-            border: 2px solid $highlight;
-          }
-        }
-        input#gradient1,
-        input#gradient2 {
-          width: 50%;
-          border: 2px solid $accent; // nice divider between the two gradients
-          &:focus {
-            border: 2px solid $highlight;
-          }
-        }
-      }
-      span.item {
-        width: 30%;
-      }
-    }
-    button.noFill {
-      display: block;
-    }
-  }
 }
 
 .edit .option.title .display {
@@ -139,7 +61,7 @@ form.edit {
     button {
       height: 100%;
       &:focus i {
-        color: $bold;
+        color: $bold        
       }
       i {
         color: $font;
@@ -150,6 +72,89 @@ form.edit {
     }
   }
 }
+
+.edit .controls .option {
+  width: 100%;
+  height: auto;
+  padding: 5%;
+  transition: background 1s;
+  &:hover {
+    background-color: $accent;
+  }
+  // drop-down button
+  .select {
+    display: flex;
+    align-items: center;
+    // text on the drop-down button
+    .text {
+      flex: 3; /* in relation to .icon */
+      text-align: left;
+      margin-left: 2%;
+    }
+    // icon on the drop-down button
+    .icon {
+      flex: 1; /* in relation to .text */
+      display: inline-block;
+      text-align: right;
+      i {
+        color: $pop;
+      }
+    }
+  }
+}
+
+.edit .controls .option .menu {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  button {
+    background-color: white;
+    color: $font;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span.itemOption {
+      width: 70%;
+      height: auto;
+      border: 2px solid $accent;
+      display: flex;
+      text-decoration: none;
+      input {
+        padding: 0;
+        margin: 0;
+      }
+      input#color,
+      input#text,
+      input#border {
+        width: 100%;
+        border: none;
+        &:focus {
+          border: 2px solid $highlight;
+        }
+      }
+      input#gradient1,
+      input#gradient2 {
+        width: 50%;
+        border: 2px solid $accent; // nice divider between the two gradients
+        &:focus {
+          border: 2px solid $highlight;
+        }
+      }
+    }
+    span.item {
+      width: 30%;
+    }
+  }
+  button.noFill {
+    display: block;
+  }
+}
+
+
+
 
 .edit .option .stylesMenu {
   button {
@@ -162,4 +167,21 @@ form.edit {
 
 .selected {
   background-color: $pop !important;
+}
+
+// preview button
+.default {
+  width: 200px;
+  height: 60px;
+  border: 4px solid #d9d1c3;
+  color: $font;
+  background: $shade;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1.2;
+  line-height: normal;
+  text-align: center;
+  border-radius: none;
+  border-bottom: 4px solid #d9d1c3;
 }

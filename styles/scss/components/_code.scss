@@ -8,6 +8,10 @@
     justify-content: flex-start;
     nav.icon {
       flex: 1;
+      button.copy {
+        position: relative; // to anchor the toaster
+      }
+      
     }
     .preview {
       flex: 6;
@@ -69,3 +73,27 @@ form.code {
     @include firas(15px, normal, normal, 1.6);
   }
 }
+
+.css {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.toaster {
+  flex-direction: column;
+  justify-content: center;
+  display: none;
+  width: 200px;
+  height: 40px;
+  position: absolute; //anchored at button.copy
+  top: 30px;
+  left: 40px;
+  color: $accent;
+  background: darken($font, 20);
+  h4 {
+    padding: 5%;
+    font-size: 18px;
+  }
+}
+

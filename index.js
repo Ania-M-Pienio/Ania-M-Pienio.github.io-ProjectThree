@@ -18,6 +18,7 @@ app.variables = function() {
   app.$gradient1 = $(`#gradient1`);
   app.$gradient2 = $(`#gradient2`);
   app.text = `button text`;
+  app.clipboard = ``;
 }; // end of variables
 
 // prepares defaults
@@ -61,7 +62,7 @@ app.setDefaults = function() {
     "line-height": { value: `normal`, color: `blue` },
     "text-align": { value: `center`, color: `blue` },
     "border-radius": { value: `0`, color: `blue` },
-    "border-bottom": { value: `none`, color: `blue` }
+    "border-bottom": { value: `4px solid #D9D1C3`, color: `blue` }
   };
   // [2]  update all UI to reflect the default values
   app.updatePickers();
@@ -71,7 +72,6 @@ app.setDefaults = function() {
 
 // replaces old css with new css into button display
 app.updateButton = function() {
-  console.log(`called updateButton`);
   app.$button.css({
     width: app.button.width.value,
     height: app.button.height.value,
@@ -92,21 +92,29 @@ app.updateButton = function() {
 // removes old list items and adds new list-items into the css code display
 app.updateCSS = function() {
   const $list = $(`ul`);
-  $list.html(``);
+  $list.html(``); // clear html
+  app.clipboard = `.vibe {`; // clear the clipboard
   for (let cssItem in app.button) {
     const listItem = this.getCSSHtml(
       cssItem,
       app.button[cssItem].value,
       app.button[cssItem].color
     );
-    $list.append(listItem);
+    $list.append(listItem); // goes to display
+    app.clipboard =
+      app.clipboard +
+      "\n" +
+      "\t" +
+      `${cssItem} : ${app.button[cssItem].value};`;
   } // end of let-in
+  app.clipboard = app.clipboard + "\n" + `}`;
 }; // end of setCSS
 
 // updates the values and background color of the color pickers on fill menu
 app.updatePickers = function() {
   $(`input.jscolor:not(input#text):not(input#border)`).val(
-    app.button.background.value);
+    app.button.background.value
+  );
   $(`input#text`).val(app.button.color.value);
   $(`input#border`).val(app.parseBorder(app.button.border.value));
 };
@@ -133,25 +141,23 @@ app.getCSSHtml = function(key, value, color) {
 
 // moves drop-down buttons around depending on what is being opended/clicked
 app.toggleMenu = function($menu, $other) {
-  app.menuOpen
-    ? $menu.css({ display: `none` })
-    : $menu.css({ display: `block` });
+  app.menuOpen ? $menu.hide() : $menu.show();
 
   app.menuOpen = !app.menuOpen;
 
   app.menuOpen
     ? $other
-        .css({ display: `none` })
+        .hide()
         .prev()
-        .css({ display: `none` })
+        .hide()
         .parent()
-        .css({ display: `none` })
+        .hide()
     : $other
         .css({ display: `flex` })
         .prev()
-        .css({ display: `block` })
+        .show()
         .parent()
-        .css({ display: `block` });
+        .show();
 
   app.menuOpen
     ? $menu.parent().css({ background: `#9FEDD7` })
@@ -169,13 +175,25 @@ app.parseBorder = function(border) {
   return border.split(` `)[2];
 };
 
+app.copyCSS = function() {
+  $(`.css`).html(`<textarea>${app.clipboard}</textarea>`);
+  const text = document.getElementsByTagName(`textarea`);
+  text[0].select(); // select only works on html dom nodes
+  text[0].setSelectionRange(0, 99999); // for mobile
+  document.execCommand(`copy`);
+
+  $(`.toaster`).show(`fast`).css({display: `flex`});
+  setTimeout(() => {
+    $(`.toaster`).hide(`slow`);
+    $(`button.copy`).blur(); // triggers an unfocus
+  }, 3000);
+};
+
 /****************************************************************/
 /*****************          HANDLERS          *******************/
 /****************************************************************/
 
-
 app.handlersAccessibility = function() {
-
   // Handler to style a parent upon child's focus
   app.$input.focus(function() {
     $(this)
@@ -196,7 +214,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-   // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus
   $(`.select`).focus(function() {
     $(this)
       .parent()
@@ -205,7 +223,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-    // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus
   $(`.select`).focusout(function() {
     $(this)
       .parent()
@@ -213,12 +231,10 @@ app.handlersAccessibility = function() {
         background: `white`
       });
   });
-}
-
+};
 
 // All event handlers for the Input for Button Text -------------------------------
 app.hanldersText = function() {
- 
   // Handler Apply Text Input
   app.$input.on(`keyup`, function() {
     app.updateText($(this).val());
@@ -227,13 +243,11 @@ app.hanldersText = function() {
 
 // All event handlers for Style Menu -------------------------------------
 app.handlersStyles = function() {
-
   // Hanlder Style Menu
   app.$styles.on(`click`, function() {
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
-  
   // Handler for resetting the form
   $(`button.title`).on(`click`, function() {
     app.setDefaults();
@@ -372,29 +386,28 @@ app.handlersCCSView = function() {
       visibility: `visible`
     });
   });
+
+  $(`button.copy`).on(`click`, function() {
+    app.copyCSS();
+  });
 };
 
 app.init = function() {
   app.variables();
   app.setup();
-  app.handlersAccessibility()
+  app.handlersAccessibility();
   app.hanldersText();
   app.handlersStyles();
   app.handlersFills();
   app.handlersCCSView();
 
-
   // ----------------TEST BUTTONS -----------------------------
   // ----------------------------------------------------------
-  $(`.test2 button`).on(`click`, function() {
-
-  });
+  $(`.test2 button`).on(`click`, function() {});
 
   $(`.test button`).on(`click`, function() {
-
-        const border = $(`input#border`).val();
-        console.log(border);
-
+    const border = $(`input#border`).val();
+    console.log(border);
   });
   // ----------------------------------------------------------
   // ----------------------------------------------------------

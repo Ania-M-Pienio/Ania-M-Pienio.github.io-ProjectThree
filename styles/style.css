@@ -369,6 +369,10 @@ form input[type="text"] {
           flex: 1;
 }
 
+.code .display nav.icon button.copy {
+  position: relative;
+}
+
 .code .display .preview {
   -webkit-box-flex: 6;
       -ms-flex: 6;
@@ -448,6 +452,35 @@ form.code {
   font-weight: normal;
   letter-spacing: normal;
   line-height: 1.6;
+}
+
+.css {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.toaster {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  color: #9FEDD7;
+  background: #000b0c;
+}
+
+.toaster h4 {
+  padding: 5%;
+  font-size: 18px;
 }
 
 form.edit {

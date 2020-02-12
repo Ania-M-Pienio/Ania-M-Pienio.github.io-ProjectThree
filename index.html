@@ -52,24 +52,23 @@
         <!------------ Form for Editing Button  -------->
         <form class="edit">
           <!--  -->
-          <!-- Button Preview ---->
+          <!------------------------ RIGHT: PREVIEW ------------------------>
           <div class="display icons">
-            <!-- navigate to the code -->
-
+            <!--------------------- Preview Navigation ----------------->
             <nav class="icon">
               <h2>PREVIEW</h2>
               <button type="button" class="switch">
+                <!-- navigate to the code -->
                 <i class="fas fa-file-code fa-2x"></i>
               </button>
             </nav>
-            <!--------------- DISPLAY BUTTON ----------------->
+            <!---------------------- Preview Button ----------------->
             <div class="preview edit">
               <button type="button" class="default">button text</button>
             </div>
           </div>
 
-          <!--  -->
-          <!-- Button Edits ----------->
+          <!------------------------ LEFT: EDITS ------------------------>
           <div class="controls">
             <!--  -->
             <section class="option title">
@@ -83,7 +82,7 @@
               </div>
             </section>
 
-            <!-- Button text -->
+            <!-- Text -->
             <section class="option text">
               <div>
                 <label for="buttonText"> Apply Text </label>
@@ -98,7 +97,7 @@
               </div>
             </section>
 
-            <!-- Style button -->
+            <!-- Style -->
             <section class="option style">
               <label for="buttonStyles"> Apply Style </label>
               <button
@@ -115,7 +114,7 @@
                 ></span>
               </button>
 
-              <!-- Style menu -->
+              <!-- style menu -->
               <div role="menu" class="menu stylesMenu">
                 <button role="menuitem" type="button" class="square">
                   <span>Square</span>
@@ -135,8 +134,7 @@
               </div>
             </section>
 
-            <!--  -->
-            <!-- Fill button -->
+            <!-- Fill  -->
             <section class="option fill">
               <label for="buttonFills"> Apply Fill </label>
               <button
@@ -152,7 +150,8 @@
                   ><i class="fas fa-align-justify"></i
                 ></span>
               </button>
-              <!-- Fill menu -->
+
+              <!-- fill menu -->
               <div role="menu" class="menu fillsMenu">
                 <button role="menuitem" type="button" class="color">
                   <span class="item">Solid</span>
@@ -181,7 +180,8 @@
                 </button>
               </div>
             </section>
-            <!-- Testing button -->
+
+            <!-- Testing button TO BE DELETED!!!!-->
             <section class="option test">
               <button type="button">TEST</button>
             </section>
@@ -192,10 +192,10 @@
           </div>
         </form>
 
-        <!------------ Form for Button CSS Code  -------->
+        <!------------ ALTERNATIVE RIGHT: CSS CODE  -------->
         <form class="code">
           <div class="display">
-            <!-- navigate to the code -->
+            <!--- CSS Code Navigation ---->
             <nav class="icon">
               <h2>CSS</h2>
               <button type="button" class="copy">
@@ -205,21 +205,22 @@
                 </div>
               </button>
               <button type="button" class="view">
+                <!-- navigate to the edits -->
                 <i class="fas fa-eye fa-2x"></i>
               </button>
             </nav>
-
+            <!--- CSS Code Preview ---->
             <div class="preview">
               <div class="cssFormat">
                 <p><span class="brown">.vibe { </span></p>
                 <ul>
-                  <!-- insert list itmes (css) here-->
+                  <!-- insert css list items here-->
                 </ul>
                 <p><span class="brown">} </span></p>
               </div>
             </div>
             <div class="css">
-              <!---- textarea for copy only ------>
+              <!---- textarea for clipboard functionality only ------>
             </div>
           </div>
         </form>

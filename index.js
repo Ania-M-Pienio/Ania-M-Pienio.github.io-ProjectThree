@@ -387,6 +387,8 @@ app.handlersCCSView = function() {
     });
   });
 
+  
+
   $(`button.copy`).on(`click`, function() {
     app.copyCSS();
   });

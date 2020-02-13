@@ -227,7 +227,7 @@ app.copyCSS = function() {
 /****************************************************************/
 
 app.handlersAccessibility = function() {
-  // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus (not available in CSS)
   // Textbox
   app.$input.focus(function() {
     $(this)
@@ -238,7 +238,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-  // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus (not available in CSS)
   // Textbox
   app.$input.focusout(function() {
     $(this)
@@ -249,7 +249,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-  // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus (not available in CSS)
   // List or Style Menu Button
   $(`.select`).focus(function() {
     $(this)
@@ -259,7 +259,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-  // Handler to style a parent upon child's focus
+  // Handler to style a parent upon child's focus (not available in CSS)
   // List or Style Menu Button
 
   $(`.select`).focusout(function() {
@@ -270,7 +270,7 @@ app.handlersAccessibility = function() {
       });
   });
 
-  // Handler to style parent upon child's focus
+  // Handler to style parent upon child's focus (not available in CSS)
   // all drop-down option buttons
 
   $(`button[role=menuitem]`).focus(function() {
@@ -296,14 +296,15 @@ app.handlersStyles = function() {
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
-  $(`button.discard`).on(`click`, `button.confirm`, function(e) {
+  // Handler for resetting the form
+  $(`form`).on(`submit`, function(e) {
     e.preventDefault();
-    console.log(`confirm yes clicked`);
+    app.setDefaults();
+    $(`.stylesMenu button`).removeClass(`selected`);
   });
 
-  // Handler for resetting the form
+  // Handler for attempting to reset form
   $(`button.discard`).on(`click`, function() {
-     console.log(`just discard button clicked`);
     const extra = {
       mssg: `Yes`,
       icon: `fas fa-thumbs-up fa-2x`,
@@ -319,12 +320,6 @@ app.handlersStyles = function() {
       )
     );
     app.toggleToaster(`button.discard`, 5000, `row`);
-
-    // code to handle smooth removal of toaster
-
-    // to actually reset
-    // app.setDefaults();
-    // $(`.stylesMenu button`).removeClass(`selected`);
   });
 
   // Handle on change Style: Square

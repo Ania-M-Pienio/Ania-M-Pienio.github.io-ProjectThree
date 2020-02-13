@@ -5,12 +5,6 @@ form {
   border: 8px solid $accent;
 }
 
-
-form .title button {
-  border: none;
-}
-
-
 form {
   .display {
     nav.icon {
@@ -37,6 +31,7 @@ form label {
   display: block;
 }
 
+// all form input (text)
 form input[type="text"] {
   padding-left: 8px;
   background-color: $highlight;

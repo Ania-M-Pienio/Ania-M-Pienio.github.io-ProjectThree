@@ -203,7 +203,7 @@ app.toggleToaster = function(id, duration, flex) {
     .css({
       display: `flex`,
       "flex-direction": `${flex}`,
-      "justify-content": `space-evenly`,
+      "justify-content": `center`,
       "align-items": `center`
     });
   $(`${id} .toaster i`).fadeIn(`slow`).focus();
@@ -297,13 +297,13 @@ app.handlersStyles = function() {
   });
 
   // Handler for resetting the form
-  $(`button.title`).on(`click`, function() {
+  $(`button.discard`).on(`click`, function() {
     const extra = {
       mssg: `Yes`,
       icon: `fas fa-thumbs-up fa-2x`,
-      iconColor: `#9FEDD7`
+      iconColor: `#026670`
     };
-    $(`button.title`).append(
+    $(`button.discard`).append(
       app.getToastHtml(
         `Discard all changes?`,
         `fas fa-exclamation-triangle fa-2x`,
@@ -311,7 +311,7 @@ app.handlersStyles = function() {
         extra
       )
     );
-    app.toggleToaster(`button.title`, 5000, `column`);
+    app.toggleToaster(`button.discard`, 5000, `row`);
 
     // code to handle smooth removal of toaster
 
@@ -481,12 +481,12 @@ app.init = function() {
 
   // ----------------TEST BUTTONS -----------------------------
   // ----------------------------------------------------------
-  $(`.test2 button`).on(`click`, function() {});
+  // $(`.test2 button`).on(`click`, function() {});
 
-  $(`.test button`).on(`click`, function() {
-    const border = $(`input#border`).val();
-    console.log(border);
-  });
+  // $(`.test button`).on(`click`, function() {
+  //   const border = $(`input#border`).val();
+  //   console.log(border);
+  // });
   // ----------------------------------------------------------
   // ----------------------------------------------------------
 }; // end of init

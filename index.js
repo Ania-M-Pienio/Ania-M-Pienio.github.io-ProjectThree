@@ -139,6 +139,24 @@ app.getCSSHtml = function(key, value, color) {
     `;
 };
 
+app.getToastHtml = function(mssg, icon, color, extra) {
+
+  let toasterHtml = `<div class="toaster">`;
+  if (icon) {
+    toasterHtml += `<i class="${icon}" style="color: ${color}"></i>`;
+  }
+  toasterHtml += `<h3>${mssg}</h3>`;
+  if (extra) {
+    toasterHtml += `<button type="button">`;
+    if (extra.icon) {
+      toasterHtml += `<i class="${extra.icon}" style="color: ${extra.iconColor}"></i>`;
+    } 
+    toasterHtml += `<h4>${extra.mssg}</h4></button>`;
+  }
+  toasterHtml += `</div>`;
+  return toasterHtml;
+};
+
 /****************************************************************/
 /*****************           HELPERS          *******************/
 /****************************************************************/
@@ -179,24 +197,29 @@ app.parseBorder = function(border) {
   return border.split(` `)[2];
 };
 
+app.toggleToaster = function(id, duration, flex) {
+  $(`${id} .toaster`)
+    .show(`fast`)
+    .css({
+      display: `flex`,
+      "flex-direction": `${flex}`,
+      "justify-content": `space-evenly`,
+      "align-items": `center`
+    });
+  $(`${id} .toaster i`).fadeIn(`slow`).focus();
+  setTimeout(() => {
+    $(`${id} .toaster`).fadeOut(`slow`);
+     $(`${id} .toaster`).remove();
+    $(`${id}`).blur(); // triggers an unfocus
+  }, duration);
+};
+
 app.copyCSS = function() {
   $(`.css`).html(`<textarea>${app.clipboard}</textarea>`);
   const text = document.getElementsByTagName(`textarea`);
   text[0].select(); // select only works on html dom nodes
   text[0].setSelectionRange(0, 99999); // for mobile
   document.execCommand(`copy`);
-
-  $(`.toaster`)
-    .show(`fast`)
-    .css({
-      display: `flex`,
-      "flex-direction": `column`,
-      "justify-content": `center`
-    });
-  setTimeout(() => {
-    $(`.toaster`).hide(`slow`);
-    $(`button.copy`).blur(); // triggers an unfocus
-  }, 2000);
 };
 
 /****************************************************************/
@@ -239,13 +262,12 @@ app.handlersAccessibility = function() {
   // Handler to style a parent upon child's focus
   // List or Style Menu Button
 
-
   $(`.select`).focusout(function() {
-      $(this)
-        .parent()
-        .css({
-          background: `white`
-        });
+    $(this)
+      .parent()
+      .css({
+        background: `white`
+      });
   });
 
   // Handler to style parent upon child's focus
@@ -257,10 +279,7 @@ app.handlersAccessibility = function() {
       .parent()
       .css({ background: `#9FEDD7` });
   });
-
-
-
-} // end of Accessibility Handlers
+}; // end of Accessibility Handlers
 
 // All event handlers for the Input for Button Text -------------------------------
 app.hanldersText = function() {
@@ -279,8 +298,26 @@ app.handlersStyles = function() {
 
   // Handler for resetting the form
   $(`button.title`).on(`click`, function() {
-    app.setDefaults();
-    $(`.stylesMenu button`).removeClass(`selected`);
+    const extra = {
+      mssg: `Yes`,
+      icon: `fas fa-thumbs-up fa-2x`,
+      iconColor: `#9FEDD7`
+    };
+    $(`button.title`).append(
+      app.getToastHtml(
+        `Discard all changes?`,
+        `fas fa-exclamation-triangle fa-2x`,
+        `#FCE181`,
+        extra
+      )
+    );
+    app.toggleToaster(`button.title`, 5000, `column`);
+
+    // code to handle smooth removal of toaster
+
+    // to actually reset
+    // app.setDefaults();
+    // $(`.stylesMenu button`).removeClass(`selected`);
   });
 
   // Handle on change Style: Square
@@ -421,6 +458,15 @@ app.handlersCCSView = function() {
 
   $(`button.copy`).on(`click`, function() {
     app.copyCSS();
+    $(`button.copy`).append(
+      app.getToastHtml(
+        `COPIED`,
+        `fas fa-check-circle fa-2x`,
+        `#9FEDD7`,
+        undefined
+      )
+    );
+    app.toggleToaster(`button.copy`, 3000, `row`);
   });
 };
 

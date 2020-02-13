@@ -45,7 +45,7 @@ form.edit {
   background-color: white;
 }
 
-.edit .option.title .display {
+.edit .controls .option.title .display {
   border: none;
   nav.icon {
     flex: 1;
@@ -54,14 +54,16 @@ form.edit {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     h2 span {
       height: 80%;
       margin-top: 10px;
     }
     button {
       height: 100%;
+      position: relative;
       &:focus i {
-        color: $bold        
+        color: $bold;
       }
       i {
         color: $font;
@@ -73,14 +75,20 @@ form.edit {
   }
 }
 
+.edit .controls .option.text,
+.edit .controls .option.style,
+.edit .controls .option.fill {
+  &:hover {
+    background-color: $accent;
+  }
+}
+
 .edit .controls .option {
   width: 100%;
   height: auto;
   padding: 5%;
   transition: background 1s;
-  &:hover {
-    background-color: $accent;
-  }
+
   // drop-down button
   .select {
     display: flex;
@@ -152,9 +160,6 @@ form.edit {
     display: block;
   }
 }
-
-
-
 
 .edit .option .stylesMenu {
   button {

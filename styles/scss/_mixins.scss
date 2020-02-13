@@ -30,3 +30,9 @@
   line-height: $height;
 }
 
+@mixin tablet-port() {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+

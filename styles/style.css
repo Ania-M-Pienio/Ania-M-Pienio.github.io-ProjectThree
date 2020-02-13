@@ -427,21 +427,82 @@ form input[type="text"] {
   display: none;
 }
 
-.display.icons.code .toaster {
+.toaster {
   display: none;
-  width: 200px;
-  height: 40px;
+  width: 170px;
+  height: auto;
   position: absolute;
-  top: 30px;
-  left: 40px;
-  color: #9FEDD7;
-  background: #000b0c;
-  opacity: 0.8;
+  top: 0;
+  left: 50px;
+  color: #026670;
+  background: none;
 }
 
-.display.icons.code .toaster h4 {
-  margin: 5px;
+.toaster i {
+  display: none;
+}
+
+.toaster h3 {
   font-size: 18px;
+}
+
+button.title .toaster {
+  top: -40px;
+  left: -140px;
+  color: #FEF9C7;
+  background: #026670;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: auto;
+  height: auto;
+  padding: 15%;
+}
+
+button.title .toaster i {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+button.title .toaster h3 {
+  font-size: 17px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 5%;
+}
+
+button.title .toaster button {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  -ms-flex-preferred-size: 50px;
+      flex-basis: 50px;
+  width: 60% !important;
+  border: 4px solid #E3430E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+button.title .toaster button:focus {
+  border: 4px solid #FCE181;
+}
+
+button.title .toaster button h4 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 18px;
+  flex: 1;
 }
 
 form.edit {
@@ -516,11 +577,11 @@ form.edit {
   background-color: white;
 }
 
-.edit .option.title .display {
+.edit .controls .option.title .display {
   border: none;
 }
 
-.edit .option.title .display nav.icon {
+.edit .controls .option.title .display nav.icon {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -535,27 +596,35 @@ form.edit {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
 }
 
-.edit .option.title .display nav.icon h2 span {
+.edit .controls .option.title .display nav.icon h2 span {
   height: 80%;
   margin-top: 10px;
 }
 
-.edit .option.title .display nav.icon button {
+.edit .controls .option.title .display nav.icon button {
   height: 100%;
+  position: relative;
 }
 
-.edit .option.title .display nav.icon button:focus i {
+.edit .controls .option.title .display nav.icon button:focus i {
   color: #E3430E;
 }
 
-.edit .option.title .display nav.icon button i {
+.edit .controls .option.title .display nav.icon button i {
   color: #026670;
 }
 
-.edit .option.title .display nav.icon button i:hover {
+.edit .controls .option.title .display nav.icon button i:hover {
   color: #E3430E;
+}
+
+.edit .controls .option.text:hover,
+.edit .controls .option.style:hover,
+.edit .controls .option.fill:hover {
+  background-color: #9FEDD7;
 }
 
 .edit .controls .option {
@@ -564,10 +633,6 @@ form.edit {
   padding: 5%;
   -webkit-transition: background 1s;
   transition: background 1s;
-}
-
-.edit .controls .option:hover {
-  background-color: #9FEDD7;
 }
 
 .edit .controls .option .select {

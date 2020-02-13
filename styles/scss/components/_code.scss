@@ -26,7 +26,7 @@
       position: relative;
     }
   }
-                      
+
 }
 
 .display.icons.code .preview {
@@ -65,18 +65,55 @@
   display: none;
 }
 
-.display.icons.code .toaster {
+.toaster {
   display: none;
-  width: 200px;
-  height: 40px;
+  width: 170px;
+  height: auto;
   position: absolute; //anchored at button.copy
-  top: 30px;
-  left: 40px;
-  color: $accent;
-  background: darken($font, 20);
-  opacity: 0.8;
-  h4 {
-    margin: 5px;
+  top: 0;
+  left: 50px;
+  color: $font;
+  background: none;
+  i {
+    display: none;
+  }
+  h3 {
     font-size: 18px;
+  }  
+}
+
+button.title .toaster {
+  top: -40px;
+  left: -140px;
+  color: $pop;
+  background: $font;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  padding: 15%;
+  i {
+    flex: 1;
+  }
+  h3 {
+    font-size: 17px;
+    flex: 1;
+    margin: 5%;
+  }
+  button {
+    flex: 2;
+    flex-basis: 50px;
+    width: 60% !important;
+    border: 4px solid $bold;
+    display: flex;
+    align-items: center;
+    &:focus {
+      border: 4px solid $highlight;
+    }
+    h4 {
+      flex: 1;
+      font-size: 18px;
+      flex: 1;
+    }
   }
 }

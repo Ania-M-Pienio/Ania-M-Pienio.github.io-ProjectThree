@@ -147,7 +147,7 @@ app.getToastHtml = function(mssg, icon, color, extra) {
   }
   toasterHtml += `<h3>${mssg}</h3>`;
   if (extra) {
-    toasterHtml += `<button type="button">`;
+    toasterHtml += `<button type="submit" class="${extra.clss}">`;
     if (extra.icon) {
       toasterHtml += `<i class="${extra.icon}" style="color: ${extra.iconColor}"></i>`;
     } 
@@ -296,12 +296,19 @@ app.handlersStyles = function() {
     app.toggleMenu(app.$stylesMenu, app.$fills);
   });
 
+  $(`button.discard`).on(`click`, `button.confirm`, function(e) {
+    e.preventDefault();
+    console.log(`confirm yes clicked`);
+  });
+
   // Handler for resetting the form
   $(`button.discard`).on(`click`, function() {
+     console.log(`just discard button clicked`);
     const extra = {
       mssg: `Yes`,
       icon: `fas fa-thumbs-up fa-2x`,
-      iconColor: `#026670`
+      iconColor: `#026670`,
+      clss: `confirm`,
     };
     $(`button.discard`).append(
       app.getToastHtml(

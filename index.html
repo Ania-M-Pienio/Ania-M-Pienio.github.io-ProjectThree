@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="icon" type="image/png" href="./assets/bird.png">
+    <link rel="icon" type="image/png" href="./assets/bird.png" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -61,15 +61,18 @@
           <div class="display icons view">
             <!--------------------- Preview Navigation ----------------->
             <nav class="icon">
-              <h2>PREVIEW</h2>
+              <h2>PREVIEW IT</h2>
               <button type="button" class="switch">
                 <!-- navigate to the code -->
                 <i class="fas fa-file-code fa-2x"></i>
+                <h5>CSS</h5>
               </button>
             </nav>
             <!---------------------- Preview Button ----------------->
             <div class="preview edit">
-              <button type="button" class="default" disabled>button text</button>
+              <button type="button" class="default" disabled>
+                button text
+              </button>
             </div>
           </div>
 
@@ -77,14 +80,16 @@
           <div class="display icons code">
             <!--- CSS Code Navigation ---->
             <nav class="icon">
-              <h2>CSS</h2>
+              <h2>GRAB IT</h2>
               <button type="button" class="copy">
                 <i class="fas fa-copy fa-2x"></i>
+                <h5>COPY</h5>
                 <!-- dynamic toaster on copy here-->
               </button>
               <button type="button" class="view">
                 <!-- navigate to the edits -->
                 <i class="fas fa-eye fa-2x"></i>
+                <h5>PREVIEW</h5>
               </button>
             </nav>
 
@@ -98,139 +103,123 @@
                 <p><span class="brown">} </span></p>
               </div>
             </div>
+
             <div class="css">
               <!---- textarea for clipboard functionality only here ------>
             </div>
+            
           </div>
 
           <!------------------------ [b] LEFT: EDITS ----------------->
           <div class="controls">
             <!-- Control Navigation-->
-            <section class="option title">
-              <div class="display">
-                <nav class="icon" id="title">
-                  <h2><span>STYLE IT</span></h2>
-                  <button aria-label="discard" type="button" class="discard">
-                    <i class="fas fa-trash-alt fa-2x"></i>                    
+
+            <nav class="icon" id="title">
+              <h2>STYLE IT</h2>
+              <button aria-label="discard" type="button" class="discard">
+                <i class="fas fa-trash-alt fa-2x"></i>
+                <h5>RESET</h5>
+              </button>
+            </nav>
+
+            <div class="options">
+              <!-- Text -->
+              <section class="option text">
+                <div>
+                  <label for="buttonText"> Apply Text </label>
+                  <input
+                    type="text"
+                    id="buttonText"
+                    placeholder="button text"
+                    maxlength="20"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+              </section>
+
+              <!-- Style -->
+              <section class="option style">
+                <label for="buttonStyles"> Apply Style </label>
+                <button
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  class="select"
+                  type="button"
+                  id="buttonStyles"
+                >
+                  <span class="text"> STYLES </span>
+
+                  <span aria-hidden="true" class="icon"
+                    ><i class="fas fa-align-justify"></i
+                  ></span>
+                </button>
+
+                <!-- style menu -->
+                <div role="menu" class="menu stylesMenu">
+                  <button role="menuitem" type="button" class="chip">
+                    <span>Chip</span>
                   </button>
-                </nav>
-              </div>
-            </section>
+                  <button role="menuitem" type="button" class="outline">
+                    <span>Outline</span>
+                  </button>
+                  <button role="menuitem" type="button" class="link">
+                    <span>Link</span>
+                  </button>
+                </div>
+              </section>
 
-            <!-- Text -->
-            <section class="option text">
-              <div>
-                <label for="buttonText"> Apply Text </label>
-                <input
-                  type="text"
-                  id="buttonText"
-                  placeholder="button text"
-                  maxlength="20"
-                  required
-                  aria-required="true"
-                />
-              </div>
-            </section>
+              <!-- Fill  -->
+              <section class="option fill">
+                <label for="buttonFills"> Apply Fill </label>
+                <button
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  class="select"
+                  type="button"
+                  id="buttonFills"
+                >
+                  <span class="text"> FILLS </span>
 
-            <!-- Style -->
-            <section class="option style">
-              <label for="buttonStyles"> Apply Style </label>
-              <button
-                aria-haspopup="true"
-                aria-expanded="false"
-                class="select"
-                type="button"
-                id="buttonStyles"
-              >
-                <span class="text"> STYLES </span>
-
-                <span aria-hidden="true" class="icon"
-                  ><i class="fas fa-align-justify"></i
-                ></span>
-
-              </button>
-
-              <!-- style menu -->
-              <div role="menu" class="menu stylesMenu">
-                <button role="menuitem" type="button" class="square">
-                  <span>Square</span>
+                  <span aria-hidden="true" class="icon"
+                    ><i class="fas fa-align-justify"></i
+                  ></span>
                 </button>
-                <button role="menuitem" type="button" class="chip">
-                  <span>Chip</span>
-                </button>
-                <button role="menuitem" type="button" class="outline">
-                  <span>Outline</span>
-                </button>
-                <button role="menuitem" type="button" class="none">
-                  <span>No Outline</span>
-                </button>
-                <button role="menuitem" type="button" class="link">
-                  <span>Link</span>
-                </button>
-              </div>
-            </section>
 
-            <!-- Fill  -->
-            <section class="option fill">
-              <label for="buttonFills"> Apply Fill </label>
-              <button
-                aria-haspopup="true"
-                aria-expanded="false"
-                class="select"
-                type="button"
-                id="buttonFills"
-              >
-                <span class="text"> FILLS </span>
-
-                <span aria-hidden="true" class="icon"
-                  ><i class="fas fa-align-justify"></i
-                ></span>
-              </button>
-
-              <!-- fill menu -->
-              <div role="menu" class="menu fillsMenu">
-                <button role="menuitem" type="button" class="color">
-                  <span class="item">Solid</span>
-                  <span class="itemOption">
-                    <input type="color" class="jscolor" id="color" />
-                  </span>
-                </button>
-                <button role="menuitem" type="button" class="gradient">
-                  <span class="item">Gradient</span>
-                  <span class="itemOption">
-                    <input type="color" class="jscolor grad" id="gradient1" />
-                    <input type="color" class="jscolor grad" id="gradient2" />
-                  </span>
-                </button>
-                <button role="menuitem" type="button" class="text">
-                  <span class="item">Text</span>
-                  <span class="itemOption">
-                    <input type="color" class="jscolor" id="text" />
-                  </span>
-                </button>
-                <button role="menuitem" type="button" class="border">
-                  <span class="item">Border</span>
-                  <span class="itemOption">
-                    <input type="color" class="jscolor" id="border" />
-                  </span>
-                </button>
-              </div>
-            </section>
-
-            <!-- Testing button TO BE DELETED!!!!-->
-            <section class="option test">
-              <button type="button">TEST</button>
-            </section>
-
-            <section class="option test2">
-              <button type="button">TEST2</button>
-            </section>
+                <!-- fill menu -->
+                <div role="menu" class="menu fillsMenu">
+                  <button role="menuitem" type="button" class="color">
+                    <span class="item">Inner</span>
+                    <span class="itemOption">
+                      <input type="color" class="jscolor" id="color" />
+                    </span>
+                  </button>
+                  <button role="menuitem" type="button" class="gradient">
+                    <span class="item">Gradient</span>
+                    <span class="itemOption">
+                      <input type="color" class="jscolor grad" id="gradient1" />
+                      <input type="color" class="jscolor grad" id="gradient2" />
+                    </span>
+                  </button>
+                  <button role="menuitem" type="button" class="text">
+                    <span class="item">Text</span>
+                    <span class="itemOption">
+                      <input type="color" class="jscolor" id="text" />
+                    </span>
+                  </button>
+                  <button role="menuitem" type="button" class="border">
+                    <span class="item">Outline</span>
+                    <span class="itemOption">
+                      <input type="color" class="jscolor" id="border" />
+                    </span>
+                  </button>
+                </div>
+              </section>
+            </div>
           </div>
         </form>
 
         <!------------ ALTERNATIVE RIGHT: CSS CODE  -------->
-
-        
       </div>
     </main>
   </body>

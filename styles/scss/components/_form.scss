@@ -1,13 +1,15 @@
 // GENERAL FORMS
+
 form {
   height: 600px;
   width: 100%;
   border: 8px solid $accent;
-}
-
-form {
   .display {
+    display: flex;
+    flex-direction: column;
     nav.icon {
+      flex: 1;
+      flex-basis: 50px;
       width: 100%;
       padding: 1% 2%;
       text-align: right;
@@ -16,9 +18,13 @@ form {
       align-items: center;
       background-color: $accent;
       button {
-        width: 10%;
+        height: 100%;
+        width: 100px;
         background: none;
       }
+    }
+    .preview {
+      flex: 2;
     }
   }
 }
@@ -39,15 +45,3 @@ form input[type="text"] {
   color: $font;
   transition: background 1s;
 }
-
-
-
-
-
-
-
-
-
-
-
-

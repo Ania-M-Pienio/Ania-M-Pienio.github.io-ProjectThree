@@ -6,11 +6,16 @@
   margin-left: -2000px;
   top: 0;
   left: 0;
+  @include tablet-port {
+    width: 90%;
+    height: auto;
+  }
   nav.icon {
-    width: 100%;
     background-color: white;
     border-bottom: 6px solid $accent;
     button {
+      display: none;
+      color: $font;
       border: 6px solid white;
       padding: 0;
       i {
@@ -26,7 +31,6 @@
       position: relative;
     }
   }
-
 }
 
 .display.icons.code .preview {
@@ -70,7 +74,7 @@
   width: 170px;
   height: auto;
   position: absolute; //anchored at button.copy
-  top: 65px;
+  top: 100px;
   left: -40px;
   color: $font;
   background: none;
@@ -79,7 +83,5 @@
   }
   h3 {
     font-size: 18px;
-  }  
+  }
 }
-
-

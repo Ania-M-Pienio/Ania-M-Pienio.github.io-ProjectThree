@@ -20,6 +20,8 @@ app.variables = function() {
   app.text = `button text`;
   app.switchHtml = ``;
   app.clipboard = ``;
+  app.lastInner = `#D9D1C3`;
+  app.lastBorder = `4px solid #D9D1C3`;
 }; // end of variables
 
 // prepares defaults
@@ -140,7 +142,6 @@ app.getCSSHtml = function(key, value, color) {
 };
 
 app.getToastHtml = function(mssg, icon, color, extra) {
-
   let toasterHtml = `<div class="toaster">`;
   if (icon) {
     toasterHtml += `<i class="${icon}" style="color: ${color}"></i>`;
@@ -150,7 +151,7 @@ app.getToastHtml = function(mssg, icon, color, extra) {
     toasterHtml += `<button type="submit" class="${extra.clss}">`;
     if (extra.icon) {
       toasterHtml += `<i class="${extra.icon}" style="color: ${extra.iconColor}"></i>`;
-    } 
+    }
     toasterHtml += `<h4>${extra.mssg}</h4></button>`;
   }
   toasterHtml += `</div>`;
@@ -166,6 +167,8 @@ app.toggleMenu = function($menu, $other) {
   app.menuOpen ? $menu.hide() : $menu.show();
 
   app.menuOpen = !app.menuOpen;
+
+  $menu.attr(`aria-expanded`, app.menuOpen);
 
   app.menuOpen
     ? $other
@@ -186,15 +189,15 @@ app.toggleMenu = function($menu, $other) {
     : $menu.parent().css({ background: `white` });
 };
 
-// scrolls to the element with the given id
-app.scrollToElem = function(id) {
-  const element = document.getElementById(id);
-  element.scrollIntoView({ behavior: "smooth" });
-};
-
-// extracts the color hex from  a border string
-app.parseBorder = function(border) {
-  return border.split(` `)[2];
+app.toggleSelect = function($this, $all) {
+  if ($this.hasClass(`selected`)) {
+    $this.removeClass(`selected`);
+    return false; // is no longer selected
+  } else {
+    $all.removeClass(`selected`);
+    $this.addClass(`selected`);
+    return true; // is now selected
+  }
 };
 
 app.toggleToaster = function(id, duration, flex) {
@@ -206,10 +209,12 @@ app.toggleToaster = function(id, duration, flex) {
       "justify-content": `center`,
       "align-items": `center`
     });
-  $(`${id} .toaster i`).fadeIn(`slow`).focus();
+  $(`${id} .toaster i`)
+    .fadeIn(`slow`)
+    .focus();
   setTimeout(() => {
     $(`${id} .toaster`).fadeOut(`slow`);
-     $(`${id} .toaster`).remove();
+    $(`${id} .toaster`).remove();
     $(`${id}`).blur(); // triggers an unfocus
   }, duration);
 };
@@ -220,6 +225,17 @@ app.copyCSS = function() {
   text[0].select(); // select only works on html dom nodes
   text[0].setSelectionRange(0, 99999); // for mobile
   document.execCommand(`copy`);
+};
+
+// scrolls to the element with the given id
+app.scrollToElem = function(id) {
+  const element = document.getElementById(id);
+  element.scrollIntoView({ behavior: "smooth" });
+};
+
+// extracts the color hex from  a border string
+app.parseBorder = function(border) {
+  return border.split(` `)[2];
 };
 
 /****************************************************************/
@@ -301,15 +317,16 @@ app.handlersStyles = function() {
     e.preventDefault();
     app.setDefaults();
     $(`.stylesMenu button`).removeClass(`selected`);
+    app.toggleToaster(`button.discard`, 500, `row`);
   });
 
   // Handler for attempting to reset form
   $(`button.discard`).on(`click`, function() {
     const extra = {
-      mssg: `Yes`,
+      mssg: `Discard`,
       icon: `fas fa-thumbs-up fa-2x`,
       iconColor: `#026670`,
-      clss: `confirm`,
+      clss: `confirm`
     };
     $(`button.discard`).append(
       app.getToastHtml(
@@ -322,63 +339,44 @@ app.handlersStyles = function() {
     app.toggleToaster(`button.discard`, 5000, `row`);
   });
 
-  // Handle on change Style: Square
-  $(`button.square`).on(`click`, function() {
-    app.button["border-radius"].value = `0`;
-    $(this)
-      .addClass(`selected`)
-      .next()
-      .removeClass(`selected`);
-    app.updateButton();
-    app.updateCSS();
-  });
-
   // Handle on change Style: Chip
   $(`button.chip`).on(`click`, function() {
-    app.button["border-radius"].value = `30px`;
-    $(this)
-      .addClass(`selected`)
-      .prev()
-      .removeClass(`selected`);
+    if (app.toggleSelect($(this), $(`.stylesMenu button`))) {
+      app.button["border-radius"].value = `30px`;
+    } else {
+      app.button["border-radius"].value = `0`;
+    }
     app.updateButton();
     app.updateCSS();
   });
 
   // Handle on change Style: Outline
   $(`button.outline`).on(`click`, function() {
-    app.button.background.value = `#FFFFFF`;
-    app.button.border.value = `4px solid ${app.button.color.value}`;
-    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
-    $(this)
-      .addClass(`selected`)
-      .next()
-      .removeClass(`selected`)
-      .next()
-      .removeClass(`selected`);
+    if (app.toggleSelect($(this), $(`.stylesMenu button`))) {
+      app.button.background.value = `#FFFFFF`;
+      app.button.border.value = `4px solid ${app.button.color.value}`;
+      app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    } else {
+      app.button.background.value = app.lastInner;
+      app.button.border.value =  app.lastBorder;
+      app.button["border-bottom"].value = app.lastBorder;
+    }
     app.updatePickers();
-    app.updateButton();
-    app.updateCSS();
-  });
-
-  // Handle on change Style: No Outline
-  $(`button.none`).on(`click`, function() {
-    app.button["border-bottom"].value = `none`;
-    app.button.border.value = `none`;
-    $(this)
-      .addClass(`selected`)
-      .prev()
-      .removeClass(`selected`);
     app.updateButton();
     app.updateCSS();
   });
 
   // Handle on change Style : Link
   $(`button.link`).on(`click`, function() {
-    app.button.background.value = `#FFFFFF`;
-    app.button.border.value = `4px solid #FFFFFF`;
-    app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
-    $(this).addClass(`selected`);
-    $(`button.none`).removeClass(`selected`);
+    if (app.toggleSelect($(this), $(`.stylesMenu button`))) {
+      app.button.background.value = `#FFFFFF`;
+      app.button.border.value = `4px solid #FFFFFF`;
+      app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
+    } else {
+      app.button.background.value = app.lastInner;
+      app.button.border.value = app.lastBorder;
+      app.button["border-bottom"].value = app.lastBorder;
+    }
     app.updatePickers();
     app.updateButton();
     app.updateCSS();
@@ -399,10 +397,11 @@ app.handlersFills = function() {
     app.updateCSS();
   });
 
-  // Handler on change Fill: Solid
+  // Handler on change Fill: Inner
   $(`input#color`).on(`change`, function() {
     app.button.background.value = $(this).val();
-    app.updatePickers();
+    app.lastInner = app.button.background.value;
+    // app.updatePickers();
     app.updateButton();
     app.updateCSS();
   });
@@ -413,11 +412,7 @@ app.handlersFills = function() {
       .val()
       .toUpperCase()}`;
     app.button["border-bottom"].value = app.button.border.value;
-    // this just styles the Outline option (on Style menu) to show as selcted automatically because applying border color means you are applying outline, and the No Outline becomes unselected
-    $(`.option.style button.outline`)
-      .addClass(`selected`)
-      .next()
-      .removeClass(`selected`);
+    app.lastBorder = app.button.border.value;
     app.updateButton();
     app.updateCSS();
   });
@@ -427,15 +422,21 @@ app.handlersFills = function() {
     const grad1 = app.$gradient1.val();
     const grad2 = app.$gradient2.val();
     app.button.background.value = `linear-gradient(to right, ${grad1}, ${grad2})`;
+    app.lastInner = app.button.background.value;
     app.updateButton();
     app.updateCSS();
   });
+
+
 }; // end of Fills
 
 // All event handlers for viewing the Code: CSS -------------------------------------------------------
 app.handlersCCSView = function() {
   // Handler for switching to css code
   $(`button.switch`).on(`click`, function() {
+    
+    $(`form.edit .display.icons.code nav.icon button`).show(`fast`);
+
     $(`form.edit .display.icons.code`).css({
       "margin-left": `10px`
     });
@@ -456,6 +457,7 @@ app.handlersCCSView = function() {
     $(`form.edit .display.icons.view`).css({
       visibility: `visible`
     });
+    $(`form.edit .display.icons.code nav.icon button`).hide(`fast`);
   });
 
   $(`button.copy`).on(`click`, function() {
@@ -481,16 +483,7 @@ app.init = function() {
   app.handlersFills();
   app.handlersCCSView();
 
-  // ----------------TEST BUTTONS -----------------------------
-  // ----------------------------------------------------------
-  // $(`.test2 button`).on(`click`, function() {});
 
-  // $(`.test button`).on(`click`, function() {
-  //   const border = $(`input#border`).val();
-  //   console.log(border);
-  // });
-  // ----------------------------------------------------------
-  // ----------------------------------------------------------
 }; // end of init
 
 $(() => {

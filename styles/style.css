@@ -898,6 +898,7 @@ html {
   padding: 0;
   min-height: 100vh;
   color: #026670;
+  height: auto;
 }
 
 .wrapper {

@@ -33,7 +33,7 @@ app.setup = function() {
   app.$button.text(app.text);
   app.$input.val(app.text);
   app.setDefaults();
-  $(`form.edit .display.icons.code .preview .cssFormat`).css(
+  $(`.cssFormat`).css(
     "transform",
     "scale(0.1)"
   );
@@ -183,7 +183,7 @@ app.toggleMenu = function($menu, $other) {
         .show()
         .parent()
         .show();
-
+  // background color while menu is droped down (not available in CSS)
   app.menuOpen
     ? $menu.parent().css({ background: `#9FEDD7` })
     : $menu.parent().css({ background: `white` });
@@ -433,31 +433,20 @@ app.handlersFills = function() {
 // All event handlers for viewing the Code: CSS -------------------------------------------------------
 app.handlersCCSView = function() {
   // Handler for switching to css code
-  $(`button.switch`).on(`click`, function() {
-    
-    $(`form.edit .display.icons.code nav.icon button`).show(`fast`);
-
-    $(`form.edit .display.icons.code`).css({
-      "margin-left": `10px`
-    });
-    $(`form.edit .display.icons.view`).css({
-      visibility: `hidden`
-    });
+  $(`button.switch`).on(`click`, function() {    
+    $(`form.edit .display.icons.code`).show('slow');
+    $(`form.edit .display.icons.view`).hide('fast');
     $(`form.edit .display.icons.code .preview .cssFormat`).css(
       "transform",
       "scale(0.95)"
-    );
+      );
+      $(`form.edit .display.icons.code nav.icon button`).show(`slow`);
   });
 
   // Handler for switching back to button view mode
   $(`button.view`).on(`click`, function() {
-    $(`form.edit .icons.code`).css({
-      "margin-left": "-2000px"
-    });
-    $(`form.edit .display.icons.view`).css({
-      visibility: `visible`
-    });
-    $(`form.edit .display.icons.code nav.icon button`).hide(`fast`);
+    $(`form.edit .icons.code`).hide(`fast`);
+    $(`form.edit .display.icons.view`).show('slow');
   });
 
   $(`button.copy`).on(`click`, function() {

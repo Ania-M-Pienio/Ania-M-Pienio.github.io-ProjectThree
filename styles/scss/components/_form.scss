@@ -17,6 +17,16 @@ form {
       justify-content: space-between;
       align-items: center;
       background-color: $accent;
+      h2 {
+        @include mobile-port {
+          font-size: 28px;
+        }
+      }
+      h2 span {
+        @include mobile-port {
+          display: none;
+        }
+      }
       button {
         height: 100%;
         width: 100px;

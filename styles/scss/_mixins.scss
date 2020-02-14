@@ -36,3 +36,9 @@
   }
 }
 
+@mixin mobile-port() {
+  @media (max-width: 380px) {
+    @content;
+  }
+}
+

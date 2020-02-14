@@ -66,12 +66,7 @@ h4 {
   margin: 0;
   padding: 0;
 }
-h5 {
-  color: $font;
-  @include franks(12px, bold, normal, normal);
-  margin: 10%;
-  padding: 5%;
-}
+
 
 h1 {
   @include joses(62px, bold, 1px, 40px);
@@ -79,6 +74,13 @@ h1 {
 
 h2 {
   @include joses(32px, bold, 1px, 30px);
+}
+
+h5 {
+  color: $font;
+  @include franks(12px, bold, normal, normal);
+  margin: 10%;
+  padding: 5%;
 }
 
 p {
@@ -106,9 +108,4 @@ main {
     padding-bottom: 10%;
     position: relative;
   }
-}
-
-main .option.test,
-main .option.test2 {
-  display: none;
 }

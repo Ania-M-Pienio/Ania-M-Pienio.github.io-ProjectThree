@@ -986,6 +986,7 @@ main {
 @media (max-width: 600px) {
   main {
     min-height: 900px;
+    background-color: fuchsia;
   }
 }
 
@@ -993,4 +994,11 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
   position: relative;
+}
+
+@media (max-width: 600px) {
+  main .wrapper {
+    min-height: 900px;
+    background-color: fuchsia;
+  }
 }

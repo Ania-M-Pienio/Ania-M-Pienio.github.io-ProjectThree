@@ -885,7 +885,7 @@ html {
   margin: 0;
   padding: 0;
   color: #026670;
-  min-height: 1000px;
+  min-height: 1200px;
 }
 
 .wrapper {
@@ -990,8 +990,7 @@ main {
 
 @media (max-width: 600px) {
   main {
-    min-height: 900px;
-    background-color: #4cafdd;
+    min-height: 1000px;
   }
 }
 
@@ -1003,7 +1002,6 @@ main .wrapper {
 
 @media (max-width: 600px) {
   main .wrapper {
-    min-height: 900px;
-    background-color: rgba(0, 38, 255, 0.746);
+    min-height: 950px;
   }
 }

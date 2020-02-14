@@ -21,6 +21,9 @@ form {
         padding-left: 10%;
         padding-right: 10%;
       }
+      @include mobile-port {
+        flex-basis: 100px;
+      }
       h2 {
         @include mobile-port {
           font-size: 28px;
@@ -38,7 +41,7 @@ form {
       }
     }
     .preview {
-      flex: 2; 
+      flex: 2;
     }
   }
 }

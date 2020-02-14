@@ -371,6 +371,13 @@ form .display nav.icon {
 }
 
 @media (max-width: 380px) {
+  form .display nav.icon {
+    -ms-flex-preferred-size: 100px;
+        flex-basis: 100px;
+  }
+}
+
+@media (max-width: 380px) {
   form .display nav.icon h2 {
     font-size: 28px;
   }
@@ -655,6 +662,13 @@ form.edit {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+}
+
+@media (max-width: 380px) {
+  .edit .controls nav.icon {
+    -ms-flex-preferred-size: 100px;
+        flex-basis: 100px;
+  }
 }
 
 @media (max-width: 380px) {

@@ -98,7 +98,7 @@ main {
   background-image: $grade;
   @include mobile-land {
     min-height: 900px;
-    background-color: fuchsia;
+    background-color: rgb(76, 175, 221);
   }
   .wrapper {
     padding-top: 5%;
@@ -106,7 +106,7 @@ main {
     position: relative;
     @include mobile-land {
       min-height: 900px;
-      background-color: fuchsia;
+      background-color: rgba(0, 38, 255, 0.746);
     }
   }
 }

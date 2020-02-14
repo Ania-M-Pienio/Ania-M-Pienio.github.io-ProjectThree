@@ -333,7 +333,6 @@ header .content .button.start button {
 @media (max-width: 960px) {
   .display.icons.code {
     width: 100;
-    height: auto;
   }
 }
 
@@ -473,6 +472,12 @@ form.edit {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+
+@media (max-width: 960px) {
+  form.edit {
+    min-height: 900px;
   }
 }
 
@@ -986,7 +991,7 @@ main {
 @media (max-width: 600px) {
   main {
     min-height: 900px;
-    background-color: fuchsia;
+    background-color: #4cafdd;
   }
 }
 
@@ -999,6 +1004,6 @@ main .wrapper {
 @media (max-width: 600px) {
   main .wrapper {
     min-height: 900px;
-    background-color: fuchsia;
+    background-color: rgba(0, 38, 255, 0.746);
   }
 }

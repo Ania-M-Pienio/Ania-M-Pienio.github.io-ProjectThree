@@ -26,6 +26,9 @@ form.edit {
   @include tablet-port {
     flex-direction: column;
   }
+    @include tablet-port {
+    min-height: 900px;
+  }
   .display {
     flex: 5;
     display: flex;

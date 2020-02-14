@@ -8,9 +8,9 @@ header {
   @include mobile-land {
     height: auto;
   }
-  @include mobile-port {
-    height: auto;
-  }
+  // @include mobile-port {
+  //   height: auto;
+  // }
   .wrapper {
     display: flex;
     justify-content: center;

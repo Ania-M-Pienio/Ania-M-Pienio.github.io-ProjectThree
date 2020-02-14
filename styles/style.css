@@ -218,13 +218,13 @@ header {
 
 @media (max-width: 600px) {
   header {
-    height: 1000px;
+    height: auto;
   }
 }
 
 @media (max-width: 380px) {
   header {
-    height: 920px;
+    height: auto;
   }
 }
 
@@ -535,7 +535,7 @@ form.edit {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: 1200px;
+    height: auto;
   }
 }
 
@@ -903,8 +903,7 @@ html {
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: 5%;
   background-color: white;
 }
 

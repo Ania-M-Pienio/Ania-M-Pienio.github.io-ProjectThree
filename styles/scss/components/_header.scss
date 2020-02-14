@@ -6,10 +6,10 @@ header {
   border-bottom: 30px solid $font;
   background-image: $grade;
   @include mobile-land {
-    height: 1000px;
+    height: auto;
   }
   @include mobile-port {
-    height: 920px;
+    height: auto;
   }
   .wrapper {
     display: flex;

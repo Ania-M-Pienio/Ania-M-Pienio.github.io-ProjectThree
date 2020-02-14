@@ -9,7 +9,7 @@ form.edit {
   display: flex;
   @include tablet-port {
     flex-direction: column;
-    height: 1200px;
+    height: auto;
   }
   .display {
     flex: 5;

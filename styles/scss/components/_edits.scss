@@ -28,7 +28,6 @@ form.edit {
   }
   .display {
     flex: 5;
-    height: 100%;
     display: flex;
     flex-direction: column;
     @include tablet-port {
@@ -36,7 +35,7 @@ form.edit {
     }
     nav.icon {
       flex: 1;
-      flex-basis: 50px;
+      flex-basis: 100px;
       width: 100%;
       padding: 1% 2%;
       text-align: right;
@@ -47,9 +46,6 @@ form.edit {
       @include tablet-port {
         padding-left: 10%;
         padding-right: 10%;
-      }
-      @include mobile-port {
-        flex-basis: 100px;
       }
       h2 {
         @include mobile-port {
@@ -114,7 +110,7 @@ form.edit {
 .edit .controls {
   nav.icon {
     flex: 1;
-    flex-basis: 35px;
+    flex-basis: 100px;
     padding: 2% 4%;
     background: none;
     display: flex;
@@ -132,14 +128,11 @@ form.edit {
       }
     }
     button {
-      height: 100%;
+      height: 100px;
       width: 80px;
       background-color: white;
       border: 6px solid white;
       &:focus {
-        border: 6px solid $highlight;
-      }
-      &:hover {
         border: 6px solid $highlight;
       }
       &:focus i {
@@ -165,7 +158,6 @@ form.edit {
 
 .edit .controls .option {
   width: 100%;
-  height: auto;
   padding: 5%;
   transition: background 1s;
   // drop-down button

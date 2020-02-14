@@ -480,7 +480,6 @@ form.edit .display {
   -webkit-box-flex: 5;
       -ms-flex: 5;
           flex: 5;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -500,8 +499,8 @@ form.edit .display nav.icon {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -ms-flex-preferred-size: 50px;
-      flex-basis: 50px;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
   width: 100%;
   padding: 1% 2%;
   text-align: right;
@@ -521,13 +520,6 @@ form.edit .display nav.icon {
   form.edit .display nav.icon {
     padding-left: 10%;
     padding-right: 10%;
-  }
-}
-
-@media (max-width: 400px) {
-  form.edit .display nav.icon {
-    -ms-flex-preferred-size: 100px;
-        flex-basis: 100px;
   }
 }
 
@@ -623,8 +615,8 @@ form.edit .display .preview {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -ms-flex-preferred-size: 35px;
-      flex-basis: 35px;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
   padding: 2% 4%;
   background: none;
   display: -webkit-box;
@@ -652,17 +644,13 @@ form.edit .display .preview {
 }
 
 .edit .controls nav.icon button {
-  height: 100%;
+  height: 100px;
   width: 80px;
   background-color: white;
   border: 6px solid white;
 }
 
 .edit .controls nav.icon button:focus {
-  border: 6px solid #FCE181;
-}
-
-.edit .controls nav.icon button:hover {
   border: 6px solid #FCE181;
 }
 
@@ -686,7 +674,6 @@ form.edit .display .preview {
 
 .edit .controls .option {
   width: 100%;
-  height: auto;
   padding: 5%;
   -webkit-transition: background 1s;
   transition: background 1s;
@@ -926,11 +913,6 @@ input[type="text"] {
 
 button:focus,
 input[type="text"]:focus {
-  border: 6px solid #FCE181;
-}
-
-button:hover,
-input[type="text"]:hover {
   border: 6px solid #FCE181;
 }
 

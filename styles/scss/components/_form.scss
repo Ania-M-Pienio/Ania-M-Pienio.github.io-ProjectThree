@@ -4,6 +4,9 @@ form {
   height: 600px;
   width: 100%;
   border: 8px solid $accent;
+  @include mobile-land {
+    height: auto;
+  }
   .display {
     display: flex;
     flex-direction: column;

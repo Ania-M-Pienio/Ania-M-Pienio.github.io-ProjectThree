@@ -332,6 +332,12 @@ form {
   border: 8px solid #9FEDD7;
 }
 
+@media (max-width: 600px) {
+  form {
+    height: auto;
+  }
+}
+
 form .display {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -549,7 +555,7 @@ form.edit {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    height: auto;
+    height: 900px;
   }
 }
 

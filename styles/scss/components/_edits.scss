@@ -26,6 +26,12 @@ form.edit {
       display: flex;
       justify-content: center;
       align-items: center;
+      @include tablet-port {
+        padding: 10%;
+      }
+      @include mobile-land {
+        padding: 15%;
+      }
     }
   }
 }
@@ -43,6 +49,7 @@ form.edit {
   border-left: 8px solid $accent;
   @include tablet-port {
     border-left: none;
+    padding: 10%;
   }
   .options {
     flex: 6;

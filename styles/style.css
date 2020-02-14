@@ -363,6 +363,13 @@ form .display nav.icon {
   background-color: #9FEDD7;
 }
 
+@media (max-width: 960px) {
+  form .display nav.icon {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
 @media (max-width: 380px) {
   form .display nav.icon h2 {
     font-size: 28px;
@@ -576,6 +583,18 @@ form.edit {
           align-items: center;
 }
 
+@media (max-width: 960px) {
+  .edit .display .preview {
+    padding: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .edit .display .preview {
+    padding: 15%;
+  }
+}
+
 .edit .controls {
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -600,6 +619,7 @@ form.edit {
 @media (max-width: 960px) {
   .edit .controls {
     border-left: none;
+    padding: 10%;
   }
 }
 

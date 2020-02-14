@@ -17,6 +17,10 @@ form {
       justify-content: space-between;
       align-items: center;
       background-color: $accent;
+      @include tablet-port {
+        padding-left: 10%;
+        padding-right: 10%;
+      }
       h2 {
         @include mobile-port {
           font-size: 28px;
@@ -34,7 +38,7 @@ form {
       }
     }
     .preview {
-      flex: 2;
+      flex: 2; 
     }
   }
 }

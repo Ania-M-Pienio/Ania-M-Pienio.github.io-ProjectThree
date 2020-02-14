@@ -880,7 +880,7 @@ html {
   margin: 0;
   padding: 0;
   color: #026670;
-  height: auto;
+  min-height: 1000px;
 }
 
 .wrapper {
@@ -981,6 +981,12 @@ main {
   border-bottom: 30px solid #026670;
   background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
   background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
+}
+
+@media (max-width: 600px) {
+  main {
+    min-height: 900px;
+  }
 }
 
 main .wrapper {

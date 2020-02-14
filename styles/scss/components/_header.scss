@@ -5,17 +5,33 @@ header {
   border-top: 30px solid $font;
   border-bottom: 30px solid $font;
   background-image: $grade;
+  @include mobile-land {
+    height: 1000px;
+  }
+  @include mobile-port {
+    height: 920px;
+  }
   .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    @include mobile-land {
+      flex-direction: column;
+    }
     .graphic {
       flex: 2; /*in relation to .content */
       padding-right: 5%;
+      @include mobile-land {
+        flex: 1;
+        padding: 15%;
+      }
     }
     .content {
       flex: 3; /*in relation to .graphic */
+      @include mobile-land {
+        flex: 5;
+      }
     }
   }
 }
@@ -43,7 +59,7 @@ header {
   }
 }
 
-  header .content .button.start { 
+header .content .button.start {
   height: 55px;
   button {
     height: 55px;

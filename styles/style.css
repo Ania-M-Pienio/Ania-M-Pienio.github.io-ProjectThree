@@ -216,6 +216,18 @@ header {
   background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
 }
 
+@media (max-width: 600px) {
+  header {
+    height: 1000px;
+  }
+}
+
+@media (max-width: 380px) {
+  header {
+    height: 920px;
+  }
+}
+
 header .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -229,6 +241,15 @@ header .wrapper {
   height: 100%;
 }
 
+@media (max-width: 600px) {
+  header .wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 header .wrapper .graphic {
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -237,11 +258,28 @@ header .wrapper .graphic {
   padding-right: 5%;
 }
 
+@media (max-width: 600px) {
+  header .wrapper .graphic {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding: 15%;
+  }
+}
+
 header .wrapper .content {
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
   /*in relation to .graphic */
+}
+
+@media (max-width: 600px) {
+  header .wrapper .content {
+    -webkit-box-flex: 5;
+        -ms-flex: 5;
+            flex: 5;
+  }
 }
 
 .content h2 {

@@ -94,15 +94,11 @@ ul li {
 
 // main setup
 main {
-  height: auto;
   border-bottom: 30px solid $font;
   background-image: $grade;
   .wrapper {
     padding-top: 5%;
     padding-bottom: 10%;
     position: relative;
-    @include tablet-port {
-      height: auto;
-    }
   }
 }

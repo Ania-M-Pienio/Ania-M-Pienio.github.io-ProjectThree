@@ -33,10 +33,7 @@ app.setup = function() {
   app.$button.text(app.text);
   app.$input.val(app.text);
   app.setDefaults();
-  $(`.cssFormat`).css(
-    "transform",
-    "scale(0.1)"
-  );
+  $(`.cssFormat`).css("transform", "scale(0.1)");
 };
 
 /****************************************************************/
@@ -277,7 +274,6 @@ app.handlersAccessibility = function() {
 
   // Handler to style a parent upon child's focus (not available in CSS)
   // List or Style Menu Button
-
   $(`.select`).focusout(function() {
     $(this)
       .parent()
@@ -358,7 +354,7 @@ app.handlersStyles = function() {
       app.button["border-bottom"].value = `4px solid ${app.button.color.value}`;
     } else {
       app.button.background.value = app.lastInner;
-      app.button.border.value =  app.lastBorder;
+      app.button.border.value = app.lastBorder;
       app.button["border-bottom"].value = app.lastBorder;
     }
     app.updatePickers();
@@ -426,27 +422,25 @@ app.handlersFills = function() {
     app.updateButton();
     app.updateCSS();
   });
-
-
 }; // end of Fills
 
 // All event handlers for viewing the Code: CSS -------------------------------------------------------
 app.handlersCCSView = function() {
   // Handler for switching to css code
-  $(`button.switch`).on(`click`, function() {    
-    $(`form.edit .display.icons.code`).show('slow');
-    $(`form.edit .display.icons.view`).hide('fast');
+  $(`button.switch`).on(`click`, function() {
+    $(`form.edit .display.icons.code`).show("slow");
+    $(`form.edit .display.icons.view`).hide("fast");
     $(`form.edit .display.icons.code .preview .cssFormat`).css(
       "transform",
       "scale(0.95)"
-      );
-      $(`form.edit .display.icons.code nav.icon button`).show(`slow`);
+    );
+    $(`form.edit .display.icons.code nav.icon button`).show(`slow`);
   });
 
   // Handler for switching back to button view mode
   $(`button.view`).on(`click`, function() {
     $(`form.edit .icons.code`).hide(`fast`);
-    $(`form.edit .display.icons.view`).show('slow');
+    $(`form.edit .display.icons.view`).show("slow");
   });
 
   $(`button.copy`).on(`click`, function() {
@@ -471,8 +465,6 @@ app.init = function() {
   app.handlersStyles();
   app.handlersFills();
   app.handlersCCSView();
-
-
 }; // end of init
 
 $(() => {

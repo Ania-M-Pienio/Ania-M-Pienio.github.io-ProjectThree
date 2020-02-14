@@ -82,6 +82,14 @@ form.edit {
 
 // EDIT CONTROLS
 
+.edit .controls .option.text:hover input {
+  background-color: white;
+}
+
+.edit .controls .option.text input:focus {
+  background-color: white;
+}
+
 .edit .controls {
   flex: 2;
   flex-basis: 150px;
@@ -97,17 +105,6 @@ form.edit {
   .options {
     flex: 6;
   }
-}
-
-.edit .controls .option.text:hover input {
-  background-color: white;
-}
-
-.edit .controls .option.text input:focus {
-  background-color: white;
-}
-
-.edit .controls {
   nav.icon {
     flex: 1;
     flex-basis: 100px;
@@ -160,6 +157,7 @@ form.edit {
   width: 100%;
   padding: 5%;
   transition: background 1s;
+
   // drop-down button
   .select {
     display: flex;
@@ -177,6 +175,14 @@ form.edit {
       text-align: right;
       i {
         color: $pop;
+      }
+    }
+  }
+  .stylesMenu {
+    button {
+      span {
+        width: 100%;
+        text-align: center;
       }
     }
   }
@@ -218,7 +224,7 @@ form.edit {
       input#gradient1,
       input#gradient2 {
         width: 50%;
-        border: 2px solid $accent; // divider btwn the 2 gradients
+        border: 2px solid $accent;
         &:focus {
           border: 2px solid $highlight;
         }
@@ -233,14 +239,7 @@ form.edit {
   }
 }
 
-.edit .option .stylesMenu {
-  button {
-    span {
-      width: 100%;
-      text-align: center;
-    }
-  }
-}
+// .edit .option
 
 .selected {
   background-color: $pop !important;

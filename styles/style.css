@@ -570,6 +570,14 @@ form.edit .display .preview {
   }
 }
 
+.edit .controls .option.text:hover input {
+  background-color: white;
+}
+
+.edit .controls .option.text input:focus {
+  background-color: white;
+}
+
 .edit .controls {
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -601,14 +609,6 @@ form.edit .display .preview {
   -webkit-box-flex: 6;
       -ms-flex: 6;
           flex: 6;
-}
-
-.edit .controls .option.text:hover input {
-  background-color: white;
-}
-
-.edit .controls .option.text input:focus {
-  background-color: white;
 }
 
 .edit .controls nav.icon {
@@ -710,6 +710,11 @@ form.edit .display .preview {
   color: #FEF9C7;
 }
 
+.edit .controls .option .stylesMenu button span {
+  width: 100%;
+  text-align: center;
+}
+
 .edit .controls .option .menu {
   width: 100%;
   height: auto;
@@ -783,11 +788,6 @@ form.edit .display .preview {
 
 .edit .controls .option .menu button.noFill {
   display: block;
-}
-
-.edit .option .stylesMenu button span {
-  width: 100%;
-  text-align: center;
 }
 
 .selected {
@@ -978,7 +978,6 @@ ul li {
 }
 
 main {
-  height: auto;
   border-bottom: 30px solid #026670;
   background-image: -webkit-gradient(linear, left top, right top, from(#E3430E), color-stop(#FCE181), color-stop(#EDEAE5), color-stop(#9FEDD7), to(#026670));
   background-image: linear-gradient(to right, #E3430E, #FCE181, #EDEAE5, #9FEDD7, #026670);
@@ -988,10 +987,4 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
   position: relative;
-}
-
-@media (max-width: 960px) {
-  main .wrapper {
-    height: auto;
-  }
 }

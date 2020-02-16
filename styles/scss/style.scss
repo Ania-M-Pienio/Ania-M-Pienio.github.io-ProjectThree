@@ -12,11 +12,7 @@ html {
   margin: 0;
   padding: 0;
   color: $font;
-  min-height: 1200px;
-}
-
-body {
-  min-height: 1500px;
+  height: auto;
 }
 
 // all wrappers

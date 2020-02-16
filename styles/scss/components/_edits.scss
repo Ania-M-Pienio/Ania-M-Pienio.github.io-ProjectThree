@@ -91,9 +91,9 @@ form.edit {
 .edit .controls {
   flex: 2;
   flex-basis: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
   background-color: white;
   border-left: 8px solid $accent;
   @include tablet-port {

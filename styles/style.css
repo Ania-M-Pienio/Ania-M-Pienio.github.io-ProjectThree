@@ -974,6 +974,7 @@ main .wrapper {
   padding-top: 5%;
   padding-bottom: 10%;
   position: relative;
+  background-color: fuchsia;
 }
 
 @media (max-width: 600px) {

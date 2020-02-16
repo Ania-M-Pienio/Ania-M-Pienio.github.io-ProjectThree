@@ -107,6 +107,7 @@ main {
     padding-top: 5%;
     padding-bottom: 10%;
     position: relative;
+    background-color: fuchsia;
     @include mobile-land {
       min-height: 1600px;
     }

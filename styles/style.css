@@ -408,7 +408,8 @@ header .content .button.start button {
 .css {
   width: 0;
   height: 0;
-  display: none;
+  position: absolute;
+  left: -2000px;
 }
 
 .toaster {
@@ -462,11 +463,8 @@ form.edit {
 
 @media (max-width: 960px) {
   form.edit {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    min-height: 1000px;
+    display: block;
+    min-height: 1500px;
   }
 }
 
@@ -536,9 +534,9 @@ form.edit .display nav.icon button {
 }
 
 form.edit .display .preview {
-  -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
   width: 100%;
   padding: 5%;
   display: -webkit-box;
@@ -869,6 +867,10 @@ html {
   padding: 0;
   color: #026670;
   min-height: 1200px;
+}
+
+body {
+  min-height: 1500px;
 }
 
 .wrapper {

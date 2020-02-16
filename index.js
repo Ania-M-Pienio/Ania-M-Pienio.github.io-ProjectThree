@@ -217,12 +217,15 @@ app.toggleToaster = function(id, duration, flex) {
 };
 
 app.copyCSS = function() {
-  $(`.css`).html(`<textarea>${app.clipboard}</textarea>`);
-  const text = document.getElementsByTagName(`textarea`);
-  text[0].select(); // select only works on html dom nodes
-  text[0].setSelectionRange(0, 99999); // for mobile
-  document.execCommand(`copy`);
-};
+  console.log(`in copyCSS()`);
+  $(`.css`).html(`<textarea id="clip">${app.clipboard}</textarea>`);
+
+  var copyText = document.getElementById("clip");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+
+}
 
 // scrolls to the element with the given id
 app.scrollToElem = function(id) {
@@ -444,6 +447,7 @@ app.handlersCCSView = function() {
   });
 
   $(`button.copy`).on(`click`, function() {
+    console.log(`copy clicked`);
     app.copyCSS();
     $(`button.copy`).append(
       app.getToastHtml(
@@ -470,3 +474,5 @@ app.init = function() {
 $(() => {
   app.init();
 }); // end of doc ready
+
+

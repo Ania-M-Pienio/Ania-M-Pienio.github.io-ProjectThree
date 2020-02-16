@@ -24,8 +24,8 @@ form.edit {
   position: relative;
   display: flex;
   @include tablet-port {
-    flex-direction: column;
-    min-height: 1000px;
+    display: block;
+    min-height: 1500px;
   }
   .display {
     flex: 5;

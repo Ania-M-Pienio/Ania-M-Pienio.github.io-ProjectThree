@@ -464,7 +464,7 @@ form.edit {
 @media (max-width: 960px) {
   form.edit {
     display: block;
-    min-height: 1500px;
+    min-height: 1200px;
   }
 }
 
@@ -484,6 +484,7 @@ form.edit .display {
 @media (max-width: 960px) {
   form.edit .display {
     border-bottom: 6px solid #9FEDD7;
+    min-height: 400px;
   }
 }
 
@@ -856,7 +857,11 @@ html {
   margin: 0;
   padding: 0;
   color: #026670;
-  height: auto;
+  height: 2000px;
+}
+
+body {
+  height: 2000px;
 }
 
 .wrapper {
@@ -961,7 +966,7 @@ main {
 
 @media (max-width: 600px) {
   main {
-    min-height: 1100px;
+    min-height: 1500px;
   }
 }
 
@@ -973,6 +978,6 @@ main .wrapper {
 
 @media (max-width: 600px) {
   main .wrapper {
-    min-height: 1000px;
+    min-height: 1600px;
   }
 }

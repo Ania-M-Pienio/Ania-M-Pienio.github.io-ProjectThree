@@ -25,7 +25,7 @@ form.edit {
   display: flex;
   @include tablet-port {
     display: block;
-    min-height: 1500px;
+    min-height: 1200px;
   }
   .display {
     flex: 5;
@@ -33,6 +33,7 @@ form.edit {
     flex-direction: column;
     @include tablet-port {
       border-bottom: 6px solid $accent;
+      min-height: 400px;
     }
     nav.icon {
       flex: 1;
@@ -91,9 +92,6 @@ form.edit {
 .edit .controls {
   flex: 2;
   flex-basis: 150px;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: flex-start;
   background-color: white;
   border-left: 8px solid $accent;
   @include tablet-port {

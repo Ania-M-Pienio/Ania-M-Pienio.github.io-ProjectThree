@@ -128,6 +128,18 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
 textarea {
   overflow: auto;
   vertical-align: top;

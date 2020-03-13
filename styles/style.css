@@ -158,6 +158,19 @@ input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
 textarea {
   overflow: auto;
   vertical-align: top;
@@ -857,11 +870,6 @@ html {
   margin: 0;
   padding: 0;
   color: #026670;
-  height: 2000px;
-}
-
-body {
-  height: 2000px;
 }
 
 .wrapper {
@@ -966,7 +974,7 @@ main {
 
 @media (max-width: 600px) {
   main {
-    min-height: 1500px;
+    height: auto;
   }
 }
 
@@ -978,6 +986,6 @@ main .wrapper {
 
 @media (max-width: 600px) {
   main .wrapper {
-    min-height: 1600px;
+    height: auto;
   }
 }

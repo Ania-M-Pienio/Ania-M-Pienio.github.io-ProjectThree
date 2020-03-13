@@ -12,12 +12,8 @@ html {
   margin: 0;
   padding: 0;
   color: $font;
-  height: 2000px;
 }
 
-body {
-  height: 2000px;
-}
 
 // all wrappers
 .wrapper {
@@ -101,14 +97,14 @@ main {
   border-bottom: 30px solid $font;
   background-image: $grade;
   @include mobile-land {
-    min-height: 1500px;
+    height: auto;
   }
   .wrapper {
     padding-top: 5%;
     padding-bottom: 10%;
     position: relative;
     @include mobile-land {
-      min-height: 1600px;
+      height: auto;
     }
   }
 }

@@ -217,7 +217,6 @@ app.toggleToaster = function(id, duration, flex) {
 };
 
 app.copyCSS = function() {
-  console.log(`in copyCSS()`);
   $(`.css`).html(`<textarea id="clip">${app.clipboard}</textarea>`);
 
   var copyText = document.getElementById("clip");
